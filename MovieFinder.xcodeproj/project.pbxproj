@@ -14,6 +14,12 @@
 		059020FB21A2CE1B00E91FCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059020FA21A2CE1B00E91FCC /* Assets.xcassets */; };
 		059020FE21A2CE1B00E91FCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059020FC21A2CE1B00E91FCC /* LaunchScreen.storyboard */; };
 		0590210921A2CE1B00E91FCC /* MovieFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590210821A2CE1B00E91FCC /* MovieFinderTests.swift */; };
+		0590211A21A2D57700E91FCC /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0590211421A2D57700E91FCC /* Alamofire.framework */; };
+		0590211B21A2D57700E91FCC /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0590211521A2D57700E91FCC /* Kingfisher.framework */; };
+		0590211C21A2D57700E91FCC /* CocoaLumberjack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0590211621A2D57700E91FCC /* CocoaLumberjack.framework */; };
+		0590211D21A2D57700E91FCC /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0590211721A2D57700E91FCC /* SnapKit.framework */; };
+		0590211E21A2D57700E91FCC /* CocoaLumberjackSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0590211821A2D57700E91FCC /* CocoaLumberjackSwift.framework */; };
+		0590211F21A2D57700E91FCC /* XCDYouTubeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0590211921A2D57700E91FCC /* XCDYouTubeKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		0590210421A2CE1B00E91FCC /* MovieFinderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MovieFinderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0590210821A2CE1B00E91FCC /* MovieFinderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFinderTests.swift; sourceTree = "<group>"; };
 		0590210A21A2CE1B00E91FCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0590211421A2D57700E91FCC /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		0590211521A2D57700E91FCC /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		0590211621A2D57700E91FCC /* CocoaLumberjack.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjack.framework; path = Carthage/Build/iOS/CocoaLumberjack.framework; sourceTree = "<group>"; };
+		0590211721A2D57700E91FCC /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		0590211821A2D57700E91FCC /* CocoaLumberjackSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CocoaLumberjackSwift.framework; path = Carthage/Build/iOS/CocoaLumberjackSwift.framework; sourceTree = "<group>"; };
+		0590211921A2D57700E91FCC /* XCDYouTubeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCDYouTubeKit.framework; path = Carthage/Build/iOS/XCDYouTubeKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +57,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0590211A21A2D57700E91FCC /* Alamofire.framework in Frameworks */,
+				0590211B21A2D57700E91FCC /* Kingfisher.framework in Frameworks */,
+				0590211C21A2D57700E91FCC /* CocoaLumberjack.framework in Frameworks */,
+				0590211D21A2D57700E91FCC /* SnapKit.framework in Frameworks */,
+				0590211E21A2D57700E91FCC /* CocoaLumberjackSwift.framework in Frameworks */,
+				0590211F21A2D57700E91FCC /* XCDYouTubeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +82,7 @@
 				059020EF21A2CE1A00E91FCC /* MovieFinder */,
 				0590210721A2CE1B00E91FCC /* MovieFinderTests */,
 				059020EE21A2CE1A00E91FCC /* Products */,
+				0590211321A2D57700E91FCC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +118,19 @@
 			path = MovieFinderTests;
 			sourceTree = "<group>";
 		};
+		0590211321A2D57700E91FCC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0590211421A2D57700E91FCC /* Alamofire.framework */,
+				0590211621A2D57700E91FCC /* CocoaLumberjack.framework */,
+				0590211821A2D57700E91FCC /* CocoaLumberjackSwift.framework */,
+				0590211521A2D57700E91FCC /* Kingfisher.framework */,
+				0590211721A2D57700E91FCC /* SnapKit.framework */,
+				0590211921A2D57700E91FCC /* XCDYouTubeKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,6 +141,7 @@
 				059020E921A2CE1A00E91FCC /* Sources */,
 				059020EA21A2CE1A00E91FCC /* Frameworks */,
 				059020EB21A2CE1A00E91FCC /* Resources */,
+				0590212021A2D57F00E91FCC /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -194,6 +227,33 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0590212021A2D57F00E91FCC /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjackSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/CocoaLumberjack.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/XCDYouTubeKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
+			);
+			name = Carthage;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		059020E921A2CE1A00E91FCC /* Sources */ = {
@@ -366,7 +426,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WE6TMBW37E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MovieFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -384,7 +449,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = WE6TMBW37E;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MovieFinder/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

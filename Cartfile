@@ -3,3 +3,12 @@ github "CocoaLumberjack/CocoaLumberjack"
 
 #SnapKit DSL
 github "SnapKit/SnapKit" ~> 4.0
+
+#HTTP
+github "Alamofire/Alamofire" == 4.7
+
+#Kingfisher - image downloading
+github "onevcat/Kingfisher" == 4.0
+
+#Play video from youtube
+github "0xced/XCDYouTubeKit" ~> 2.5
