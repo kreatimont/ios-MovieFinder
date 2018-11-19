@@ -87,7 +87,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
             make.edges.equalToSuperview()
         }
         
-        collectionView.refreshControl = refreshControl
+//        collectionView.refreshControl = refreshControl
         
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.identifier)
         
@@ -177,7 +177,8 @@ extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
 extension PopularMoviesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        //TODO: show details about movie in new view controller
+        let detailsMovieContoller = DetailsMovieViewController(movie: self.movies[indexPath.item])
+        self.navigationController?.pushViewController(detailsMovieContoller, animated: true)
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

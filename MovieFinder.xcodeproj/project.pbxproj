@@ -33,6 +33,8 @@
 		0590213F21A2DDF600E91FCC /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213E21A2DDF600E91FCC /* ApiKeys.swift */; };
 		0590214121A2DFD600E91FCC /* UIViewContoller+alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590214021A2DFD600E91FCC /* UIViewContoller+alertable.swift */; };
 		0590214521A2E2A600E91FCC /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0590214421A2E2A600E91FCC /* keys.plist */; };
+		0590214821A2F0DE00E91FCC /* DetailsMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590214721A2F0DE00E91FCC /* DetailsMovieViewController.swift */; };
+		0590214A21A2FB0000E91FCC /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590214921A2FB0000E91FCC /* VideoCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,8 @@
 		0590213E21A2DDF600E91FCC /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		0590214021A2DFD600E91FCC /* UIViewContoller+alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+alertable.swift"; sourceTree = "<group>"; };
 		0590214421A2E2A600E91FCC /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
+		0590214721A2F0DE00E91FCC /* DetailsMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMovieViewController.swift; sourceTree = "<group>"; };
+		0590214921A2FB0000E91FCC /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 		0590212321A2D65F00E91FCC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0590214621A2F0C600E91FCC /* Detailed movie info */,
 				0590212C21A2DAC000E91FCC /* Popular movies */,
 			);
 			path = Scenes;
@@ -240,6 +245,15 @@
 				0590213E21A2DDF600E91FCC /* ApiKeys.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0590214621A2F0C600E91FCC /* Detailed movie info */ = {
+			isa = PBXGroup;
+			children = (
+				0590214721A2F0DE00E91FCC /* DetailsMovieViewController.swift */,
+				0590214921A2FB0000E91FCC /* VideoCell.swift */,
+			);
+			path = "Detailed movie info";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0590214821A2F0DE00E91FCC /* DetailsMovieViewController.swift in Sources */,
 				0590213F21A2DDF600E91FCC /* ApiKeys.swift in Sources */,
 				0590213221A2DCF000E91FCC /* Response.swift in Sources */,
 				0590213921A2DD7A00E91FCC /* Constants.swift in Sources */,
@@ -379,6 +394,7 @@
 				0590212E21A2DAD000E91FCC /* MovieCell.swift in Sources */,
 				0590213421A2DD0900E91FCC /* Movie.swift in Sources */,
 				059020F321A2CE1A00E91FCC /* ViewController.swift in Sources */,
+				0590214A21A2FB0000E91FCC /* VideoCell.swift in Sources */,
 				0590213D21A2DDCF00E91FCC /* MovieRouter.swift in Sources */,
 				059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */,
 				0590212B21A2D90F00E91FCC /* NavigationController+lightContent.swift in Sources */,
