@@ -1,5 +1,5 @@
 # MovieFinder-iOS
-iOS client for TMDb / movie rent service. The app allows you to discover popular films and watch trailers. 
+iOS client for TMDb / movie rent service. The app allows you to discover popular films and watch their trailers. 
 This is iOS version of the old Android app [Cinematograph](https://github.com/kreatimont/android-tmdb) that was created for practice.
 
 ***
@@ -7,4 +7,4 @@ This is iOS version of the old Android app [Cinematograph](https://github.com/kr
 ### Screenshots:
  Master           		                | Detail			          
 :------------------------------------:|:-----------------------------:
-![movies](https://github.com/kreatimont/MovieFinder-ios/blob/master/preview/scr_master.png)     |![detail](https://github.com/kreatimont/MovieFinder-ios/blob/master/preview/scr_detail.png)
+![movies](https://github.com/kreatimont/MovieFinder-ios/raw/master/preview/src_master.PNG)     |![detail](https://github.com/kreatimont/MovieFinder-ios/raw/master/preview/src_detail.PNG)
