@@ -32,6 +32,7 @@
 		0590213D21A2DDCF00E91FCC /* MovieRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213B21A2DDCF00E91FCC /* MovieRouter.swift */; };
 		0590213F21A2DDF600E91FCC /* ApiKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213E21A2DDF600E91FCC /* ApiKeys.swift */; };
 		0590214121A2DFD600E91FCC /* UIViewContoller+alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590214021A2DFD600E91FCC /* UIViewContoller+alertable.swift */; };
+		0590214521A2E2A600E91FCC /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0590214421A2E2A600E91FCC /* keys.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		0590213B21A2DDCF00E91FCC /* MovieRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieRouter.swift; sourceTree = "<group>"; };
 		0590213E21A2DDF600E91FCC /* ApiKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKeys.swift; sourceTree = "<group>"; };
 		0590214021A2DFD600E91FCC /* UIViewContoller+alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContoller+alertable.swift"; sourceTree = "<group>"; };
+		0590214421A2E2A600E91FCC /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 		059020E421A2CE1A00E91FCC = {
 			isa = PBXGroup;
 			children = (
+				0590214421A2E2A600E91FCC /* keys.plist */,
 				059020EF21A2CE1A00E91FCC /* MovieFinder */,
 				0590210721A2CE1B00E91FCC /* MovieFinderTests */,
 				059020EE21A2CE1A00E91FCC /* Products */,
@@ -321,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0590214521A2E2A600E91FCC /* keys.plist in Resources */,
 				059020FE21A2CE1B00E91FCC /* LaunchScreen.storyboard in Resources */,
 				059020FB21A2CE1B00E91FCC /* Assets.xcassets in Resources */,
 				059020F621A2CE1A00E91FCC /* Main.storyboard in Resources */,
