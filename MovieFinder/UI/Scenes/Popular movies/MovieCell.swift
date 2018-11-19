@@ -13,24 +13,31 @@ class MovieCell: UICollectionViewCell {
     
     static let `identifier` = "movie-cell"
     
-    lazy var backdropImageView: UIImageView = {
+    lazy var posterImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor = Color.textColor
+        label.textColor = Color.mainText
         label.numberOfLines = 3
         label.lineBreakMode = .byWordWrapping
         label.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         return label
     }()
     
-    var backdropImage: UIImage? {
+    private lazy var separatorLine: UIView = {
+        let view = UIView()
+        view.backgroundColor = Color.separator
+        return view
+    }()
+    
+    var posterImage: UIImage? {
         didSet {
-            self.backdropImageView.image = backdropImage
+            self.posterImageView.image = posterImage
         }
     }
     
@@ -42,24 +49,32 @@ class MovieCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.backdropImage = nil
+        self.posterImage = nil
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.contentView.addSubview(backdropImageView)
-        backdropImageView.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().inset(16)
-            make.top.bottom.equalToSuperview().inset(4)
-            make.width.equalTo(self.contentView.snp.height).multipliedBy(0.5)
+        self.contentView.addSubview(posterImageView)
+        posterImageView.snp.makeConstraints { (make) in
+            make.left.equalToSuperview().inset(6)
+            make.top.equalToSuperview().inset(12)
+            make.bottom.equalToSuperview().inset(12)
+            make.width.equalTo(self.snp.height).multipliedBy(0.60)
         }
         
         self.contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(self.backdropImageView.snp.top)
-            make.left.equalTo(self.backdropImageView.snp.right).offset(8)
+            make.top.equalTo(self.posterImageView.snp.top)
+            make.left.equalTo(self.posterImageView.snp.right).offset(8)
             make.right.equalToSuperview().inset(16)
+        }
+        
+        self.contentView.addSubview(separatorLine)
+        separatorLine.snp.makeConstraints { (make) in
+            make.left.equalTo(self.posterImageView.snp.left)
+            make.right.bottom.equalToSuperview()
+            make.height.equalTo(0.5)
         }
         
     }

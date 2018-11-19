@@ -15,9 +15,9 @@ class NavigationControllerLightStatusBar: UINavigationController {
     }
     
     override func viewDidLoad() {
-        navigationBar.shadowImage = nil
-        navigationBar.barTintColor = Color.background
-        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationBar.isTranslucent = true
+        navigationBar.barStyle = .black
     }
     
 }
+

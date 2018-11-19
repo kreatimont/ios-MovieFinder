@@ -17,37 +17,112 @@ class PopularMoviesViewController: UIViewController, Alertable {
         return UICollectionView(frame: .zero, collectionViewLayout: cvLayout)
     }()
     
+    private lazy var refreshControl: UIRefreshControl = {
+        let refreshCtrl = UIRefreshControl()
+        refreshCtrl.tintColor = UIColor.gray
+        refreshCtrl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
+        return refreshCtrl
+    }()
+    
+    private lazy var loadingView: UIView = {
+        let _loadingView = UIView()
+        
+        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        activityIndicator.startAnimating()
+        
+        let label = UILabel()
+        label.text = "Loading".uppercased()
+        label.textColor = UIColor.gray
+        
+        let stackView = UIStackView(arrangedSubviews: [activityIndicator, label])
+        stackView.distribution = .fillProportionally
+        stackView.spacing = 8
+        stackView.alignment = .leading
+        stackView.axis = .horizontal
+        
+        _loadingView.addSubview(stackView)
+        stackView.snp.makeConstraints({ (make) in
+            make.centerX.centerY.equalToSuperview()
+        })
+        
+        return _loadingView
+    }()
+    
+    private lazy var emptyStubView: UIView = {
+        let _emptyStubView = UIView()
+        
+        let label = UILabel()
+        label.text = "No data".uppercased()
+        label.textColor = UIColor.gray
+        
+        _emptyStubView.addSubview(label)
+        label.snp.makeConstraints({ (make) in
+            make.centerX.centerY.equalToSuperview()
+        })
+        
+        return _emptyStubView
+    }()
+    
     private var itemsPerRow: CGFloat = 1
     private var sectionInsets: UIEdgeInsets {
-        return UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+        return UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 0.0)
     }
-    private var lineSpace: CGFloat = 8
+    private var lineSpace: CGFloat = 0
     private var interitemSpace: CGFloat = 8
     
     private var movies = [Movie]()
     private var currentPage = 1
     
+    var downloading = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Popular"
         
+        self.view.backgroundColor = Color.background
+        collectionView.backgroundColor = Color.background
+        
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+            make.edges.equalToSuperview()
         }
+        
+        collectionView.refreshControl = refreshControl
+        
+        collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.identifier)
         
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        self.showLoading()
         self.fetchMovies()
+    }
+    
+    //MARK: - actions
+    
+    @objc func handleRefresh(_ sender: Any?) {
+        //TODO: implement swipe to refesh
     }
     
     //MARK: - private
     
+    private func showLoading() {
+        self.collectionView.backgroundView = self.loadingView
+    }
+    
+    private func showEmptyStub() {
+        self.collectionView.backgroundView = self.emptyStubView
+    }
+    
+    private func showCollectionView() {
+        self.collectionView.backgroundView = nil
+    }
+    
     private func fetchMovies(page: Int = 1) {
-//        self.downloading = true
+        self.downloading = true
         MovieClient.popular(page: page) { (result) in
-//            self.downloading = false
+            self.downloading = false
+            self.showCollectionView()
             switch result {
             case .success:
                 guard let dataDict = result.value as? [String: AnyObject] else {
@@ -82,7 +157,7 @@ extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
         let paddingSpace = (sectionInsets.left + sectionInsets.right) + ((itemsPerRow - 1) * interitemSpace)
         let availableWidth = collectionView.frame.width - paddingSpace
         let widthPerItem = availableWidth / itemsPerRow
-        return CGSize(width: widthPerItem, height: 100)
+        return CGSize(width: widthPerItem, height: 120)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -108,8 +183,11 @@ extension PopularMoviesViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.collectionView else { return }
         if scrollView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) - 160 {
-            self.currentPage += 1
-            self.fetchMovies(page: self.currentPage)
+            if !downloading {
+                self.currentPage += 1
+                self.fetchMovies(page: self.currentPage)
+            }
+            
         }
     }
     
@@ -134,13 +212,13 @@ extension PopularMoviesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? MovieCell else { return }
-        cell.backdropImageView.kf.setImage(with: movies[indexPath.row].thumbnailUrl)
+        cell.posterImageView.kf.setImage(with: movies[indexPath.row].posterUrl)
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         guard let cell = cell as? MovieCell else { return }
-        cell.backdropImageView.kf.cancelDownloadTask()
+        cell.posterImageView.kf.cancelDownloadTask()
     }
     
 }
