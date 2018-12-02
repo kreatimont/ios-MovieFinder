@@ -119,6 +119,8 @@ class DetailsMovieViewController: UIViewController, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.largeTitleDisplayMode = .never
+        
         self.view.backgroundColor = Color.background
         
         self.view.addSubview(backgroundImageView)

@@ -77,6 +77,8 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
         self.title = "Popular"
         
         self.view.backgroundColor = Color.background

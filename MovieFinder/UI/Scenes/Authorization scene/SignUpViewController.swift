@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class LoginViewController: UIViewController, Alertable {
+class SignUpViewController: UIViewController, Alertable {
     
     private lazy var videoFrame: UIView = {
         let view = UIView()
@@ -38,6 +38,17 @@ class LoginViewController: UIViewController, Alertable {
         return textField
     }()
     
+    private lazy var emailField: InputTextField = {
+        let textField = InputTextField()
+        textField.textColor = UIColor.white
+        textField.backgroundColor = .clear
+        textField.attributedPlaceholder = NSAttributedString(string: "e-mail", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+        textField.delegate = self
+        textField.autocapitalizationType = .none
+        textField.keyboardType = .emailAddress
+        return textField
+    }()
+    
     private lazy var passwordField: InputTextField = {
         let textField = InputTextField()
         textField.textColor = UIColor.white
@@ -48,36 +59,28 @@ class LoginViewController: UIViewController, Alertable {
         return textField
     }()
     
-    private lazy var loginButton: ButtonBg = {
+    private lazy var signUpButton: ButtonBg = {
         let button = ButtonBg()
-        button.setTitle("Login", for: .normal)
+        button.setTitle("Take me here!", for: .normal)
         button.addTarget(self, action: #selector(handleLoginTap(_:)), for: .touchUpInside)
         return button
     }()
     
-    private lazy var signUpButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitleColor(UIColor.white, for: .normal)
         button.setTitleColor(UIColor.gray, for: .highlighted)
-        button.setTitle("Sign Up", for: .normal)
+        button.setTitle("Back to login", for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-        button.addTarget(self, action: #selector(handleSignUpTap(_:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(handleBackToLoginTap(_:)), for: .touchUpInside)
         return button
     }()
     
-    private lazy var welcomeLabel: UILabel = {
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 46, weight: .heavy)
-        label.text = "Welcome to"
+        label.text = "Sign up"
         label.textColor = UIColor.white
-        return label
-    }()
-    
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 46, weight: .heavy)
-        label.text = "Movie Finder"
-        label.textColor = self.view.tintColor
         return label
     }()
     
@@ -105,9 +108,16 @@ class LoginViewController: UIViewController, Alertable {
             make.left.equalToSuperview().inset(16)
         }
         
+        fieldsContainer.addSubview(self.emailField)
+        emailField.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(30)
+        }
+        
         fieldsContainer.addSubview(self.usernameField)
         usernameField.snp.makeConstraints { (make) in
-            make.left.right.top.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.top.equalTo(self.emailField.snp.bottom).offset(18)
             make.height.equalTo(30)
         }
         
@@ -118,31 +128,23 @@ class LoginViewController: UIViewController, Alertable {
             make.height.equalTo(30)
         }
         
-        fieldsContainer.addSubview(loginButton)
-        loginButton.snp.makeConstraints { (make) in
+        fieldsContainer.addSubview(signUpButton)
+        signUpButton.snp.makeConstraints { (make) in
             make.left.right.bottom.equalToSuperview()
             make.top.equalTo(self.passwordField.snp.bottom).offset(18)
             make.height.equalTo(40)
         }
         
-        self.view.addSubview(signUpButton)
-        signUpButton.snp.makeConstraints { (make) in
+        self.view.addSubview(loginButton)
+        loginButton.snp.makeConstraints { (make) in
             make.bottom.left.equalTo(self.view.safeAreaLayoutGuide).inset(16)
         }
         
-        self.view.addSubview(welcomeLabel)
-        welcomeLabel.snp.makeConstraints { (make) in
+        self.view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { (make) in
             make.width.equalToSuperview().multipliedBy(0.9)
             make.left.equalToSuperview().inset(16)
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(20)
-        }
-        
-        self.view.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(self.welcomeLabel)
-            make.top.equalTo(self.welcomeLabel.snp.bottom)
-            make.right.lessThanOrEqualToSuperview().inset(16)
-            make.bottom.lessThanOrEqualTo(fieldsContainer.snp.top).offset(16)
         }
         
     }
@@ -153,14 +155,14 @@ class LoginViewController: UIViewController, Alertable {
         Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
     }
     
-    @objc func handleSignUpTap(_ sender: Any?) {
-        self.present(SignUpViewController(), animated: true, completion: nil)
+    @objc func handleBackToLoginTap(_ sender: Any?) {
+        self.dismiss(animated: true, completion: nil)
     }
     
 }
 
 
-extension LoginViewController: UITextFieldDelegate {
+extension SignUpViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let inputTF = textField as? InputTextField {
