@@ -20,7 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureAppearance()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = assemblyViewController()
+//        window?.rootViewController = assemblyViewController()
+        window?.rootViewController = LoginViewController()
         window?.makeKeyAndVisible()
         
         return true
@@ -28,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func configureAppearance() {
         //TODO: add default black appearance
+        
     }
     
     func assemblyViewController() -> UIViewController {
