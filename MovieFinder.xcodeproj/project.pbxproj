@@ -37,6 +37,7 @@
 		05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6521BE5172005559EB /* SwitchCell.swift */; };
 		05A81D6921BE51AC005559EB /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6821BE51AC005559EB /* LogoutCell.swift */; };
 		05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6A21BE6BCA005559EB /* AuthSession.swift */; };
+		05A81D6D21BE6DE8005559EB /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6C21BE6DE8005559EB /* AuthRouter.swift */; };
 		05AEB17921B4719D008944D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17821B4719D008944D5 /* LoginViewController.swift */; };
 		05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17A21B477E7008944D5 /* InputTextField.swift */; };
 		05AEB17D21B47B25008944D5 /* ButtonBg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17C21B47B25008944D5 /* ButtonBg.swift */; };
@@ -90,6 +91,7 @@
 		05A81D6521BE5172005559EB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		05A81D6821BE51AC005559EB /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		05A81D6A21BE6BCA005559EB /* AuthSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSession.swift; sourceTree = "<group>"; };
+		05A81D6C21BE6DE8005559EB /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		05AEB17821B4719D008944D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05AEB17A21B477E7008944D5 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		05AEB17C21B47B25008944D5 /* ButtonBg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBg.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				05A81D6A21BE6BCA005559EB /* AuthSession.swift */,
 				0590213A21A2DDCF00E91FCC /* ApiClient.swift */,
 				0590213B21A2DDCF00E91FCC /* MovieRouter.swift */,
+				05A81D6C21BE6DE8005559EB /* AuthRouter.swift */,
 				0590213021A2DCD600E91FCC /* Model */,
 			);
 			path = Networking;
@@ -442,6 +445,7 @@
 				05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */,
 				05AEB18121B48BDE008944D5 /* Navigator.swift in Sources */,
 				0590213921A2DD7A00E91FCC /* Constants.swift in Sources */,
+				05A81D6D21BE6DE8005559EB /* AuthRouter.swift in Sources */,
 				0590214121A2DFD600E91FCC /* UIViewContoller+alertable.swift in Sources */,
 				0590212E21A2DAD000E91FCC /* MovieCell.swift in Sources */,
 				0590213421A2DD0900E91FCC /* Movie.swift in Sources */,
