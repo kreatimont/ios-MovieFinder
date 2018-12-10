@@ -19,7 +19,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     private lazy var refreshControl: UIRefreshControl = {
         let refreshCtrl = UIRefreshControl()
-        refreshCtrl.tintColor = UIColor.gray
+        refreshCtrl.tintColor = Color.mainText
         refreshCtrl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
         return refreshCtrl
     }()
@@ -27,12 +27,12 @@ class PopularMoviesViewController: UIViewController, Alertable {
     private lazy var loadingView: UIView = {
         let _loadingView = UIView()
         
-        let activityIndicator = UIActivityIndicatorView(style: .gray)
+        let activityIndicator = UIActivityIndicatorView(style: .white)
         activityIndicator.startAnimating()
         
         let label = UILabel()
-        label.text = "Loading".uppercased()
-        label.textColor = UIColor.gray
+        label.text = "Loading"
+        label.textColor = Color.mainText
         
         let stackView = UIStackView(arrangedSubviews: [activityIndicator, label])
         stackView.distribution = .fillProportionally
@@ -89,7 +89,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
             make.edges.equalToSuperview()
         }
         
-//        collectionView.refreshControl = refreshControl
+        collectionView.refreshControl = refreshControl
         
         collectionView.register(MovieCell.self, forCellWithReuseIdentifier: MovieCell.identifier)
         
@@ -104,6 +104,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     @objc func handleRefresh(_ sender: Any?) {
         //TODO: implement swipe to refesh
+        self.fetchMovies()
     }
     
     //MARK: - private
@@ -125,6 +126,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
         MovieClient.popular(page: page) { (result) in
             self.downloading = false
             self.showCollectionView()
+            self.refreshControl.endRefreshing()
             switch result {
             case .success:
                 guard let dataDict = result.value as? [String: AnyObject] else {
@@ -132,6 +134,13 @@ class PopularMoviesViewController: UIViewController, Alertable {
                     return
                 }
                 if let response = Response(with: dataDict) {
+                    var deletePaths = [IndexPath]()
+                    if page == 1 {
+                        for i in 0..<self.movies.count {
+                            deletePaths.append(IndexPath(row: i, section: 0))
+                        }
+                        self.movies.removeAll()
+                    }
                     var insertIndexPaths = [IndexPath]()
                     for i in self.movies.count...(self.movies.count + response.results.count - 1) {
                         insertIndexPaths.append(IndexPath(row: i, section: 0))
@@ -139,6 +148,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
                     self.movies.append(contentsOf: response.results)
                     DispatchQueue.main.async {
                         self.collectionView.performBatchUpdates({
+                            self.collectionView.deleteItems(at: deletePaths)
                             self.collectionView.insertItems(at: insertIndexPaths)
                         }, completion: nil)
                     }
