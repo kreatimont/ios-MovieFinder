@@ -61,13 +61,23 @@ enum MovieRouter: URLRequestConvertible {
         }
     }
     
+    private var headers: [String: String?] {
+        return ["Authorization": AuthSession.current.authToken]
+    }
+    
     func asURLRequest() throws -> URLRequest {
         let baseUrlString = baseUrl.appending(path)
         let url = try baseUrlString.asURL()
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = method.rawValue
         
-        print("[Network] \(self.method.rawValue.uppercased()) \(self.baseUrl)\(self.path) ⬆️")
+        for header in self.headers {
+            if let value = header.value {
+                urlRequest.addValue(value, forHTTPHeaderField: header.key)
+            }
+        }
+        
+        print("[Network] \(self.method.rawValue.uppercased()) \(self.baseUrl)\(self.path) \(self.parameters ?? [:]) ⬆️")
         
         if let parameters = parameters {
             return try encoding.encode(urlRequest, with: parameters)
