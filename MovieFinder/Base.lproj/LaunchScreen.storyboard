@@ -18,25 +18,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Finder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ESI-ZA-xOk">
-                                <rect key="frame" x="88.5" y="140" width="198" height="44"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="32"/>
-                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@kreatimont" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Id9-vj-qSZ">
-                                <rect key="frame" x="152" y="642" width="71" height="17"/>
-                                <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="12"/>
-                                <color key="textColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test_img" translatesAutoresizingMaskIntoConstraints="NO" id="Ax3-QB-Fsi">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sk4-a5-gBD">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="1oW-fE-IEw">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MovieFinder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FaS-Aa-LQz">
+                                            <rect key="frame" x="39.5" y="302" width="296" height="63"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="52"/>
+                                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="FaS-Aa-LQz" firstAttribute="centerX" secondItem="1oW-fE-IEw" secondAttribute="centerX" id="aeD-cd-4tB"/>
+                                        <constraint firstItem="FaS-Aa-LQz" firstAttribute="centerY" secondItem="1oW-fE-IEw" secondAttribute="centerY" id="cPA-lx-4VL"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" red="0.12941176469999999" green="0.12941176469999999" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ESI-ZA-xOk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="6DH-vR-agY"/>
-                            <constraint firstItem="ESI-ZA-xOk" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="120" id="A2G-OP-nmW"/>
-                            <constraint firstItem="Id9-vj-qSZ" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="FKI-cA-gsI"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Id9-vj-qSZ" secondAttribute="bottom" constant="8" id="ijk-sC-wmg"/>
+                            <constraint firstItem="sk4-a5-gBD" firstAttribute="width" secondItem="Ax3-QB-Fsi" secondAttribute="width" id="Dif-Vw-SR7"/>
+                            <constraint firstItem="sk4-a5-gBD" firstAttribute="centerY" secondItem="Ax3-QB-Fsi" secondAttribute="centerY" id="HIK-AG-AYf"/>
+                            <constraint firstItem="Ax3-QB-Fsi" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="K6t-pU-RXI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ax3-QB-Fsi" secondAttribute="trailing" id="bJd-G8-yOr"/>
+                            <constraint firstItem="Ax3-QB-Fsi" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="cW7-w5-DGe"/>
+                            <constraint firstItem="sk4-a5-gBD" firstAttribute="centerX" secondItem="Ax3-QB-Fsi" secondAttribute="centerX" id="i4U-t4-NG4"/>
+                            <constraint firstItem="sk4-a5-gBD" firstAttribute="height" secondItem="Ax3-QB-Fsi" secondAttribute="height" id="std-qe-FFT"/>
+                            <constraint firstAttribute="bottom" secondItem="Ax3-QB-Fsi" secondAttribute="bottom" id="vVD-al-ERR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -46,4 +61,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="test_img" width="750" height="1334"/>
+    </resources>
 </document>
