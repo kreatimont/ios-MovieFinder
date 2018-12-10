@@ -34,6 +34,8 @@
 		0590214521A2E2A600E91FCC /* keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0590214421A2E2A600E91FCC /* keys.plist */; };
 		0590214821A2F0DE00E91FCC /* DetailsMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590214721A2F0DE00E91FCC /* DetailsMovieViewController.swift */; };
 		0590214A21A2FB0000E91FCC /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590214921A2FB0000E91FCC /* VideoCell.swift */; };
+		05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6521BE5172005559EB /* SwitchCell.swift */; };
+		05A81D6921BE51AC005559EB /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6821BE51AC005559EB /* LogoutCell.swift */; };
 		05AEB17921B4719D008944D5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17821B4719D008944D5 /* LoginViewController.swift */; };
 		05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17A21B477E7008944D5 /* InputTextField.swift */; };
 		05AEB17D21B47B25008944D5 /* ButtonBg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17C21B47B25008944D5 /* ButtonBg.swift */; };
@@ -84,6 +86,8 @@
 		0590214421A2E2A600E91FCC /* keys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = keys.plist; sourceTree = "<group>"; };
 		0590214721A2F0DE00E91FCC /* DetailsMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsMovieViewController.swift; sourceTree = "<group>"; };
 		0590214921A2FB0000E91FCC /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
+		05A81D6521BE5172005559EB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
+		05A81D6821BE51AC005559EB /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		05AEB17821B4719D008944D5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		05AEB17A21B477E7008944D5 /* InputTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextField.swift; sourceTree = "<group>"; };
 		05AEB17C21B47B25008944D5 /* ButtonBg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonBg.swift; sourceTree = "<group>"; };
@@ -270,6 +274,15 @@
 			path = "Detailed movie info";
 			sourceTree = "<group>";
 		};
+		05A81D6421BE515B005559EB /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				05A81D6521BE5172005559EB /* SwitchCell.swift */,
+				05A81D6821BE51AC005559EB /* LogoutCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		05AEB17721B44436008944D5 /* Authorization scene */ = {
 			isa = PBXGroup;
 			children = (
@@ -282,6 +295,7 @@
 		05AEB18421B48E2B008944D5 /* Account scene */ = {
 			isa = PBXGroup;
 			children = (
+				05A81D6421BE515B005559EB /* Cells */,
 				05AEB18521B48E3A008944D5 /* AccountViewController.swift */,
 			);
 			path = "Account scene";
@@ -430,7 +444,9 @@
 				0590214A21A2FB0000E91FCC /* VideoCell.swift in Sources */,
 				0590213D21A2DDCF00E91FCC /* MovieRouter.swift in Sources */,
 				059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */,
+				05A81D6921BE51AC005559EB /* LogoutCell.swift in Sources */,
 				0590212B21A2D90F00E91FCC /* NavigationController+lightContent.swift in Sources */,
+				05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */,
 				059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */,
 				05AEB18621B48E3A008944D5 /* AccountViewController.swift in Sources */,
 				05AEB17F21B4832A008944D5 /* SignUpViewController.swift in Sources */,
