@@ -35,6 +35,7 @@ class LoginViewController: UIViewController, Alertable {
         textField.delegate = self
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
+        textField.returnKeyType = .next
         return textField
     }()
     
@@ -45,6 +46,7 @@ class LoginViewController: UIViewController, Alertable {
         textField.isSecureTextEntry = true
         textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         textField.delegate = self
+        textField.returnKeyType = .done
         return textField
     }()
     
@@ -145,6 +147,10 @@ class LoginViewController: UIViewController, Alertable {
             make.bottom.lessThanOrEqualTo(fieldsContainer.snp.top).offset(16)
         }
         
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
     }
     
     //MARK: - action
@@ -161,6 +167,19 @@ class LoginViewController: UIViewController, Alertable {
 
 
 extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.usernameField {
+            self.passwordField.becomeFirstResponder()
+            return true
+        }
+        if textField == self.passwordField {
+            //procced login
+            textField.endEditing(true)
+            return true
+        }
+        return true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let inputTF = textField as? InputTextField {

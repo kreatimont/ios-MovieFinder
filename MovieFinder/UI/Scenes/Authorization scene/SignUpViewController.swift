@@ -34,7 +34,8 @@ class SignUpViewController: UIViewController, Alertable {
         textField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         textField.delegate = self
         textField.autocapitalizationType = .none
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .default
+        textField.returnKeyType = .next
         return textField
     }()
     
@@ -46,6 +47,7 @@ class SignUpViewController: UIViewController, Alertable {
         textField.delegate = self
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
+        textField.returnKeyType = .next
         return textField
     }()
     
@@ -56,6 +58,7 @@ class SignUpViewController: UIViewController, Alertable {
         textField.isSecureTextEntry = true
         textField.attributedPlaceholder = NSAttributedString(string: "Password", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         textField.delegate = self
+        textField.returnKeyType = .done
         return textField
     }()
     
@@ -147,6 +150,10 @@ class SignUpViewController: UIViewController, Alertable {
             make.top.equalTo(self.view.safeAreaLayoutGuide).offset(20)
         }
         
+        let tap = UITapGestureRecognizer(target: self.view, action: #selector(UIView.endEditing(_:)))
+        tap.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tap)
+        
     }
     
     //MARK: - action
@@ -163,6 +170,23 @@ class SignUpViewController: UIViewController, Alertable {
 
 
 extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.emailField {
+            self.usernameField.becomeFirstResponder()
+            return true
+        }
+        if textField == self.usernameField {
+            self.passwordField.becomeFirstResponder()
+            return true
+        }
+        if textField == self.passwordField {
+            //procced login
+            textField.endEditing(true)
+            return true
+        }
+        return true
+    }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         if let inputTF = textField as? InputTextField {

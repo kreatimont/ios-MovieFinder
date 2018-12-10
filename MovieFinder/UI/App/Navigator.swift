@@ -64,12 +64,10 @@ class Navigator {
         tabBarController.tabBar.barStyle = .black
         
         let popular = PopularMoviesViewController()
-        popular.tabBarItem = UITabBarItem(tabBarSystemItem: .topRated, tag: 0)
-        popular.tabBarItem.title = "Popular"
+        popular.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(named: "ic_popular"), selectedImage: nil)
         
         let account = AccountViewController()
-        account.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 0)
-        account.tabBarItem.title = "Account"
+        account.tabBarItem = UITabBarItem(title: "Account", image: UIImage(named: "ic_person"), selectedImage: nil)
         
         let viewControllers = [popular, account]
         tabBarController.viewControllers = viewControllers.map { return NavigationControllerLightStatusBar(rootViewController: $0) }
