@@ -10,6 +10,7 @@ import Alamofire
 
 typealias LoginCompletion = ((_ token: String?, _ userId: Int?, _ error: String?) -> ())
 typealias RegisterCompletion = ((_ success: Bool, _ error: String?) -> ())
+typealias SearchCompletion = ((_ movies: [Movie], _ error: String?) -> ())
 
 class MovieFinderClient: MoviesAbstractClient {
     
@@ -58,6 +59,34 @@ class MovieFinderClient: MoviesAbstractClient {
             }
             
         }.log()
+    }
+    
+    func search(name: String, completion: SearchCompletion?) {
+        _ = Alamofire.request(MovieFinderRouter.search(name: name)).responseData { (response: DataResponse) in
+            
+            switch response.result {
+            case .success(let data):
+                
+                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any?]], let safeJson = json {
+                    
+                    var movies = [Movie]()
+                    
+                    for rawMovieData in safeJson {
+                        if let movie = Movie(with: rawMovieData) {
+                            movies.append(movie)
+                        }
+                    }
+                    completion?(movies, nil)
+                    
+                } else {
+                    completion?([], "Bad response format")
+                }
+                
+            case .failure(let error):
+                completion?([], error.localizedDescription)
+            }
+            
+            }.log()
     }
     
     static func register(email: String, user: String, password: String, completion: RegisterCompletion?) -> DataRequest {

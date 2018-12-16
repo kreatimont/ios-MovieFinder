@@ -38,6 +38,8 @@
 		05A4B18521C6B4DE00E56646 /* MovieFinderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4B18421C6B4DE00E56646 /* MovieFinderClient.swift */; };
 		05A4B18721C6B62100E56646 /* TMDbClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4B18621C6B62100E56646 /* TMDbClient.swift */; };
 		05A4B18921C6DC3500E56646 /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4B18821C6DC3500E56646 /* Regex.swift */; };
+		05A4B18C21C6EAE300E56646 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4B18B21C6EAE300E56646 /* SearchViewController.swift */; };
+		05A4B18F21C6EC1E00E56646 /* SearchResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A4B18E21C6EC1E00E56646 /* SearchResultViewController.swift */; };
 		05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6521BE5172005559EB /* SwitchCell.swift */; };
 		05A81D6921BE51AC005559EB /* LogoutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6821BE51AC005559EB /* LogoutCell.swift */; };
 		05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05A81D6A21BE6BCA005559EB /* AuthSession.swift */; };
@@ -96,6 +98,8 @@
 		05A4B18421C6B4DE00E56646 /* MovieFinderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieFinderClient.swift; sourceTree = "<group>"; };
 		05A4B18621C6B62100E56646 /* TMDbClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDbClient.swift; sourceTree = "<group>"; };
 		05A4B18821C6DC3500E56646 /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
+		05A4B18B21C6EAE300E56646 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		05A4B18E21C6EC1E00E56646 /* SearchResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultViewController.swift; sourceTree = "<group>"; };
 		05A81D6521BE5172005559EB /* SwitchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchCell.swift; sourceTree = "<group>"; };
 		05A81D6821BE51AC005559EB /* LogoutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutCell.swift; sourceTree = "<group>"; };
 		05A81D6A21BE6BCA005559EB /* AuthSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSession.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 		0590212321A2D65F00E91FCC /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				05A4B18A21C6EAD500E56646 /* Search scene */,
 				05AEB18421B48E2B008944D5 /* Account scene */,
 				05AEB17721B44436008944D5 /* Authorization scene */,
 				0590214621A2F0C600E91FCC /* Detailed movie info */,
@@ -322,6 +327,15 @@
 				05A4B18621C6B62100E56646 /* TMDbClient.swift */,
 			);
 			path = "Client fabrique";
+			sourceTree = "<group>";
+		};
+		05A4B18A21C6EAD500E56646 /* Search scene */ = {
+			isa = PBXGroup;
+			children = (
+				05A4B18B21C6EAE300E56646 /* SearchViewController.swift */,
+				05A4B18E21C6EC1E00E56646 /* SearchResultViewController.swift */,
+			);
+			path = "Search scene";
 			sourceTree = "<group>";
 		};
 		05A81D6421BE515B005559EB /* Cells */ = {
@@ -488,6 +502,7 @@
 				05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */,
 				05A4B17921C6B22000E56646 /* MovieFinderRouter.swift in Sources */,
 				05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */,
+				05A4B18C21C6EAE300E56646 /* SearchViewController.swift in Sources */,
 				05AEB18121B48BDE008944D5 /* Navigator.swift in Sources */,
 				0590213921A2DD7A00E91FCC /* Constants.swift in Sources */,
 				05A4B18321C6B33B00E56646 /* MoviesAbstractClient.swift in Sources */,
@@ -510,6 +525,7 @@
 				05AEB17D21B47B25008944D5 /* ButtonBg.swift in Sources */,
 				0590212521A2D6B600E91FCC /* PopularMoviesViewController.swift in Sources */,
 				0590212821A2D7D600E91FCC /* Color+MovieFinder.swift in Sources */,
+				05A4B18F21C6EC1E00E56646 /* SearchResultViewController.swift in Sources */,
 				0590213621A2DD3600E91FCC /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

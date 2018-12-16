@@ -66,10 +66,13 @@ class Navigator {
         let popular = PopularMoviesViewController(client: MovieFinderClient())
         popular.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(named: "ic_popular"), selectedImage: nil)
         
+        let search = SearchViewController()
+        search.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
+        
         let account = AccountViewController()
         account.tabBarItem = UITabBarItem(title: "Account", image: UIImage(named: "ic_person"), selectedImage: nil)
         
-        let viewControllers = [popular, account]
+        let viewControllers = [popular, search, account]
         tabBarController.viewControllers = viewControllers.map { return NavigationControllerLightStatusBar(rootViewController: $0) }
         
         return tabBarController

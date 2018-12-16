@@ -22,6 +22,7 @@ struct Constants {
             static let apiKey = "api_key"
             static let page = "page"
             static let appendToResponse = "append_to_response"
+            static let searchName = "name"
             
             static let username = "user"
             static let password = "password"

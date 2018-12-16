@@ -13,10 +13,11 @@ enum MovieFinderRouter: URLRequestConvertible {
     case top(page: Int)
     case latest(page: Int)
     case details(id: Int)
+    case search(name: String)
     
     private var method: HTTPMethod {
         switch self {
-        case .top, .latest, .details:
+        case .top, .latest, .details, .search:
             return .get
         }
     }
@@ -29,6 +30,8 @@ enum MovieFinderRouter: URLRequestConvertible {
             return "/movies/latest"
         case .details(let id):
             return "/movies/\(id)"
+        case .search:
+            return "/movies/search"
         }
     }
     
@@ -38,12 +41,14 @@ enum MovieFinderRouter: URLRequestConvertible {
             return [Constants.Api.ParameterKey.page: page]
         case .details:
             return nil
+        case .search(let name):
+            return [Constants.Api.ParameterKey.searchName: name]
         }
     }
     
     private var baseUrl: String {
         switch self {
-        case .top, .latest, .details:
+        case .top, .latest, .details, .search:
             return "\(Constants.Api.localUrl)"
         }
     }
