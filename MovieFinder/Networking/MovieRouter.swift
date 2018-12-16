@@ -10,20 +10,20 @@ import Alamofire
 
 enum MovieRouter: URLRequestConvertible {
     
-    case popular(page: Int)
+    case top(page: Int)
     case latest(page: Int)
     case details(id: Int)
     
     private var method: HTTPMethod {
         switch self {
-        case .popular, .latest, .details:
+        case .top, .latest, .details:
             return .get
         }
     }
     
     private var path: String {
         switch self {
-        case .popular:
+        case .top:
             return "/movies/top"
         case .latest:
             return "/movies/latest"
@@ -48,7 +48,7 @@ enum MovieRouter: URLRequestConvertible {
     
     private var baseUrl: String {
         switch self {
-        case .popular, .latest, .details:
+        case .top, .latest, .details:
             return "\(Constants.Api.localUrl)"
         }
     }

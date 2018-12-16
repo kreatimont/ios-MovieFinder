@@ -79,7 +79,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Popular"
+        self.title = "Top"
         
         self.view.backgroundColor = Color.background
         collectionView.backgroundColor = Color.background
@@ -123,7 +123,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     private func fetchMovies(page: Int = 1) {
         self.downloading = true
-        _ = MovieClient.popular(page: page) { (movieResponse, error) in
+        _ = MovieClient.top(page: page) { (movieResponse, error) in
             self.downloading = false
             self.showCollectionView()
             self.refreshControl.endRefreshing()

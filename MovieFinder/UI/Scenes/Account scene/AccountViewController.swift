@@ -81,8 +81,8 @@ extension AccountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = "Name"
-            cell.detailTextLabel?.text = "Alexandr"
+            cell.textLabel?.text = "Email"
+            cell.detailTextLabel?.text = AuthSession.current.email
             
             cell.textLabel?.textColor = Color.mainText
             cell.backgroundColor = Color.cellBackground

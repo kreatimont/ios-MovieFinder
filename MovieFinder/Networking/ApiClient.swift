@@ -30,8 +30,8 @@ class AccessTokenAdapter: RequestAdapter {
 
 class MovieClient {
     
-    static func popular(page: Int, completion: ((MovieResponse?, String?) -> Void)?) -> DataRequest {
-        return Alamofire.request(MovieRouter.popular(page: page)).responseData { (response: DataResponse) in
+    static func top(page: Int, completion: ((MovieResponse?, String?) -> Void)?) -> DataRequest {
+        return Alamofire.request(MovieRouter.top(page: page)).responseData { (response: DataResponse) in
             
             switch response.result {
             case .success(let data):
