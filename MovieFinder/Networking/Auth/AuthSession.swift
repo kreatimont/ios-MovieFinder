@@ -69,6 +69,10 @@ extension AuthSession {
         return self.authToken != nil && self.userId != nil
     }
     
+    func activateAlamofire() {
+        Alamofire.SessionManager.default.adapter = AccessTokenAdapter(accessToken: self.authToken ?? "")
+    }
+    
     func close(rememberCredetionals: Bool = true) {
         self.authToken = nil
         self.userId = nil

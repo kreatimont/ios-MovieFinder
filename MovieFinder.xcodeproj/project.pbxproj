@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		051E57C921C70BFF00BFBF23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E57C821C70BFF00BFBF23 /* User.swift */; };
+		051E57CB21C70F3000BFBF23 /* WatchlaterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */; };
 		059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059020F021A2CE1A00E91FCC /* AppDelegate.swift */; };
 		059020F621A2CE1A00E91FCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059020F421A2CE1A00E91FCC /* Main.storyboard */; };
 		059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059020F721A2CE1A00E91FCC /* MovieFinder.xcdatamodeld */; };
@@ -66,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		051E57C821C70BFF00BFBF23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlaterListViewController.swift; sourceTree = "<group>"; };
 		059020ED21A2CE1A00E91FCC /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059020F021A2CE1A00E91FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059020F521A2CE1A00E91FCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			children = (
 				05A81D6421BE515B005559EB /* Cells */,
 				05AEB18521B48E3A008944D5 /* AccountViewController.swift */,
+				051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */,
 			);
 			path = "Account scene";
 			sourceTree = "<group>";
@@ -526,6 +529,7 @@
 				05A4B18521C6B4DE00E56646 /* MovieFinderClient.swift in Sources */,
 				05A4B18721C6B62100E56646 /* TMDbClient.swift in Sources */,
 				051E57C921C70BFF00BFBF23 /* User.swift in Sources */,
+				051E57CB21C70F3000BFBF23 /* WatchlaterListViewController.swift in Sources */,
 				05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */,
 				059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */,
 				05AEB18621B48E3A008944D5 /* AccountViewController.swift in Sources */,

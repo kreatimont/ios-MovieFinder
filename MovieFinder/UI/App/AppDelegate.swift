@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         if AuthSession.current.isActive() {
+            AuthSession.current.activateAlamofire()
             window?.rootViewController = Navigator.shared.assemblyTabBar()
         } else {
             window?.rootViewController = LoginViewController()

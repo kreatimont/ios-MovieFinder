@@ -17,6 +17,8 @@ class AccountViewController: UIViewController, Alertable {
     
     private lazy var tableView = UITableView(frame: .zero, style: .grouped)
     
+    var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,6 +37,11 @@ class AccountViewController: UIViewController, Alertable {
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        
+        _ = MovieFinderClient().profile(id: AuthSession.current.userId!) { (user, error) in
+            self.user = user
+        }
+        
     }
     
     //MARK: - action
@@ -56,7 +63,9 @@ extension AccountViewController: UITableViewDelegate {
         }
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                
+                if let user = self.user {
+                    self.navigationController?.pushViewController(WatchlaterListViewController(client: MovieFinderClient(), moviesIds: user.watchlaterMoviesIds), animated: true)
+                }
             } else if indexPath.row == 1 {
                 self.showAlert(title: nil, message: "Bought movies section is currently unavailable", buttonTitle: "OK", handler: nil)
             }
