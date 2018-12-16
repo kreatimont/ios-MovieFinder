@@ -200,13 +200,14 @@ extension PopularMoviesViewController: UICollectionViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.collectionView else { return }
-        if scrollView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) - 160 {
-            if !downloading {
-                self.currentPage += 1
-                self.fetchMovies(page: self.currentPage)
-            }
-            
-        }
+//        Uncomment for endless scroll
+//        if scrollView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) - 160 {
+//            if !downloading {
+//                self.currentPage += 1
+//                self.fetchMovies(page: self.currentPage)
+//            }
+//
+//        }
     }
     
 }

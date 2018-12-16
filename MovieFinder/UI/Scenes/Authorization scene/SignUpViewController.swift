@@ -91,6 +91,8 @@ class SignUpViewController: UIViewController, Alertable {
         return .lightContent
     }
     
+    var client = MovieFinderClient()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -171,7 +173,7 @@ class SignUpViewController: UIViewController, Alertable {
             self.emailField.becomeFirstResponder()
             return
         }
-        if !isValidEmail(email: email) {
+        if !validateEmail(email) {
             self.showAlert(title: nil, message: "Please, enter valid email!", buttonTitle: "OK", handler: nil)
             return
         }
@@ -188,25 +190,30 @@ class SignUpViewController: UIViewController, Alertable {
             return
         }
         
-        _ = MovieFinderClient.register(email: email, user: username, password: password) { (token, error) in
-            if let sToken = token {
-                AuthSession.current.update(authToken: sToken, email: email)
-                Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+        
+        _ = MovieFinderClient.register(email: email, user: username, password: password) { (success, error) in
+            if success {
+                _ = MovieFinderClient.login(email: email, password: password, completion: { (authToken, userId, lError) in
+                    if authToken != nil && userId != nil {
+                        AuthSession.current.update(authToken: authToken!, email: email, userId: userId!)
+                        DispatchQueue.main.async {
+                            Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+                        }
+                    } else {
+                        self.showAlert(title: nil, message: lError, buttonTitle: "OK", handler: nil)
+                    }
+                })
             } else {
-                self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+                DispatchQueue.main.async {
+                    self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+                }
             }
         }
-        
         
     }
     
     @objc func handleBackToLoginTap(_ sender: Any?) {
         self.dismiss(animated: true, completion: nil)
-    }
-    
-    func isValidEmail(email: String) -> Bool {
-        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
-        return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.count)) != nil
     }
     
 }

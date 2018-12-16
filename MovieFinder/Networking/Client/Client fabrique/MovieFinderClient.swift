@@ -8,6 +8,9 @@
 
 import Alamofire
 
+typealias LoginCompletion = ((_ token: String?, _ userId: Int?, _ error: String?) -> ())
+typealias RegisterCompletion = ((_ success: Bool, _ error: String?) -> ())
+
 class MovieFinderClient: MoviesAbstractClient {
     
     func details(id: Int, completion: ((Movie?, String?) -> ())?) {
@@ -57,29 +60,56 @@ class MovieFinderClient: MoviesAbstractClient {
         }.log()
     }
     
-    static func register(email: String, user: String, password: String, completion: ((_ token: String?, _  error: String?) -> ())?) -> DataRequest {
+    static func register(email: String, user: String, password: String, completion: RegisterCompletion?) -> DataRequest {
         return Alamofire.request(MovieFinderAuthRouter.signup(username: user, password: password, email: email)).responseData { (response: DataResponse) in
+
+            switch response.result {
+            case .success(let data):
+                if let code = response.response?.statusCode {
+                    switch code {
+                        case 200...299: completion?(true, nil)
+                        default: completion?(false, String(data: data, encoding: .utf8))
+                    }
+                    
+                } else {
+                    completion?(false, nil)
+                }
+            case .failure(let error):
+                completion?(false, error.localizedDescription)
+            }
+            
+        }.log()
+    }
+    
+    static func login(email: String, password: String, completion: LoginCompletion?) -> DataRequest {
+        return Alamofire.request(MovieFinderAuthRouter.login(email: email, password: password)).responseData { (response: DataResponse) in
             
             switch response.result {
             case .success(let data):
                 
-                if let headers = response.response?.allHeaderFields, let authToken = headers["Authorization"] as? String {
-                    completion?(authToken, nil)
+                if let headers = response.response?.allHeaderFields,
+                    let authToken = headers["Authorization"] as? String,
+                    let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?],
+                    let safeJson = json, let userData = safeJson["data"] as? [String: Any?],
+                    let userId = userData["userId"] as? Int {
+                    
+                    completion?(authToken, userId, nil)
+                    
                 } else {
                     
                     if let error = String(data: data, encoding: .utf8) {
-                        completion?(nil, error)
+                        completion?(nil, nil, error)
                     } else {
-                        completion?(nil, "bad response")
+                        completion?(nil, nil, "bad response")
                     }
                     
                 }
                 
             case .failure(let error):
-                completion?(nil, error.localizedDescription)
+                completion?(nil, nil, error.localizedDescription)
             }
             
-        }.log()
+            }.log()
     }
     
 }

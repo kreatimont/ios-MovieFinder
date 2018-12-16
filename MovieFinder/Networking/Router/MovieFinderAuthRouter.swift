@@ -10,7 +10,7 @@ import Alamofire
 
 enum MovieFinderAuthRouter: URLRequestConvertible {
     
-    case login(username: String, password: String)
+    case login(email: String, password: String)
     case signup(username: String, password: String, email: String)
     
     private var method: HTTPMethod {
@@ -32,7 +32,7 @@ enum MovieFinderAuthRouter: URLRequestConvertible {
     private var parameters: Parameters? {
         switch self {
         case .login(let username, let password):
-            return [Constants.Api.ParameterKey.username: username,
+            return [Constants.Api.ParameterKey.email: username,
                     Constants.Api.ParameterKey.password: password]
         case .signup(let username, let password, let email):
             return [Constants.Api.ParameterKey.username: username,
