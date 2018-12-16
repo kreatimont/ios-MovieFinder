@@ -20,8 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         configureAppearance()
         
         window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = assemblyViewController()
-        window?.rootViewController = LoginViewController()
+        if AuthSession.current.isActive() {
+            window?.rootViewController = Navigator.shared.assemblyTabBar()
+        } else {
+            window?.rootViewController = LoginViewController()
+        }
+        
         window?.makeKeyAndVisible()
         
         return true

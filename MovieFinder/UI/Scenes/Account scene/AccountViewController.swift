@@ -40,6 +40,7 @@ class AccountViewController: UIViewController, Alertable {
     //MARK: - action
     
     @objc func handleLogoutTap(_ sender: Any?) {
+        AuthSession.current.close(rememberCredetionals: true)
         Navigator.shared.route(to: .login, wrap: .none)
     }
     
@@ -48,6 +49,11 @@ class AccountViewController: UIViewController, Alertable {
 extension AccountViewController: UITableViewDelegate {
  
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.row == 2 {
+                UIPasteboard.general.string = AuthSession.current.authToken
+            }
+        }
         if indexPath.section == 2 {
             self.handleLogoutTap(nil)
         }
@@ -59,7 +65,7 @@ extension AccountViewController: UITableViewDataSource {
     
     func generateBgViewForSelectedCell() -> UIView {
         let selectedBackground = UIView()
-        selectedBackground.backgroundColor = UIColor.darkGray
+        selectedBackground.backgroundColor = Color.separator
         return selectedBackground
     }
     
@@ -69,7 +75,7 @@ extension AccountViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return 1
+            return 3
         } else if section == 1 {
             return 2
         } else if section == 2 {
@@ -81,8 +87,23 @@ extension AccountViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
-            cell.textLabel?.text = "Email"
-            cell.detailTextLabel?.text = AuthSession.current.email
+            
+            if indexPath.row == 0 {
+                cell.textLabel?.text = "Email"
+                cell.detailTextLabel?.text = AuthSession.current.email
+            } else if indexPath.row == 1 {
+                cell.textLabel?.text = "User id"
+                cell.detailTextLabel?.text = "\(AuthSession.current.userId ?? -1)"
+            } else if indexPath.row == 2 {
+                let textCell = TextViewCell(style: .default, reuseIdentifier: "textViewCell")
+                textCell.backgroundColor = Color.cellBackground
+                textCell.selectedBackgroundView = generateBgViewForSelectedCell()
+                textCell.textLabel?.text = AuthSession.current.authToken ?? ""
+                textCell.textLabel?.textColor = Color.mainText
+                textCell.textLabel?.numberOfLines = 5
+                textCell.textLabel?.font = UIFont(name: "Courier", size: 15)
+                return textCell
+            }
             
             cell.textLabel?.textColor = Color.mainText
             cell.backgroundColor = Color.cellBackground
@@ -92,11 +113,12 @@ extension AccountViewController: UITableViewDataSource {
         } else if indexPath.section == 1 {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             if indexPath.row == 0 {
-                cell.textLabel?.text = "Notifications"
+                cell.textLabel?.text = "Watchlater list"
             } else if indexPath.row == 1 {
-                cell.textLabel?.text = "Data and storage"
+                cell.textLabel?.text = "Bought movies"
                 
             }
+            cell.accessoryType = .disclosureIndicator
             cell.textLabel?.textColor = Color.mainText
             cell.backgroundColor = Color.cellBackground
             cell.selectedBackgroundView = generateBgViewForSelectedCell()

@@ -11,7 +11,7 @@ import UIKit
 struct Color {
     
     static let background = UIColor(red:0.13, green:0.13, blue:0.13, alpha:1.0)
-    static let cellBackground = UIColor(red:0.24, green:0.24, blue:0.24, alpha:1.0)
+    static let cellBackground = UIColor(hexString: "#191919")
     static let destructive = UIColor(hexString: "#cf2929")
     static let mainText = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
     static let secondaryText = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.0)

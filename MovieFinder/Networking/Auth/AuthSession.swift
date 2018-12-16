@@ -66,7 +66,7 @@ class AuthSession {
 extension AuthSession {
     
     func isActive() -> Bool {
-        return self.authToken != nil
+        return self.authToken != nil && self.userId != nil
     }
     
     func close(rememberCredetionals: Bool = true) {
