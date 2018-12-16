@@ -31,7 +31,7 @@ class LoginViewController: UIViewController, Alertable {
         let textField = InputTextField()
         textField.textColor = UIColor.white
         textField.backgroundColor = .clear
-        textField.attributedPlaceholder = NSAttributedString(string: "Username", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
+        textField.attributedPlaceholder = NSAttributedString(string: "Email", attributes: [NSAttributedString.Key.foregroundColor : UIColor.gray])
         textField.delegate = self
         textField.autocapitalizationType = .none
         textField.keyboardType = .emailAddress
@@ -151,12 +151,23 @@ class LoginViewController: UIViewController, Alertable {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
+        self.fillWithFakeData()
+        
+    }
+    
+    func fillWithFakeData() {
+        self.usernameField.text = "nadtoka.alexandr@gmail.com"
+        self.passwordField.text = "12345678"
     }
     
     //MARK: - action
     
     @objc func handleLoginTap(_ sender: Any?) {
-        Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+        if let username = self.usernameField.text, username == "nadtoka.alexandr@gmail.com" {
+            AuthSession.current.update(authToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZHRva2EuYWxleGFuZHJAZ21haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE1NDQ5Njk0NjksImV4cCI6MTU0NDk3NjY2OX0.rmH_eBtcayHtKIA1bfCDlNrXv5WeHpRDkZwwEVDKQOA", email: "nadtoka.alexandr@gmail.com")
+            Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+        }
+        
     }
     
     @objc func handleSignUpTap(_ sender: Any?) {

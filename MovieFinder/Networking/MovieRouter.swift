@@ -24,31 +24,32 @@ enum MovieRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         case .popular:
-            return "/movie/popular"
+            return "/movies/top"
         case .latest:
-            return "/movie/latest"
+            return "/movies/latest"
         case .details(let id):
-            return "/movie/\(id)"
+            return "/movies/\(id)"
         }
     }
     
     private var parameters: Parameters? {
-        switch self {
-        case .popular(let page), .latest(let page):
-            return [Constants.Api.ParameterKey.lang: Locale.current.languageCode ?? "en_US",
-                    Constants.Api.ParameterKey.apiKey: valueForAPIKey(keyname: "tmdb-apiv3"),
-                    Constants.Api.ParameterKey.page: page]
-        case .details:
-            return [Constants.Api.ParameterKey.lang: Locale.current.languageCode ?? "en_US",
-                    Constants.Api.ParameterKey.apiKey: valueForAPIKey(keyname: "tmdb-apiv3"),
-                    Constants.Api.ParameterKey.appendToResponse: "videos"]
-        }
+        return nil
+//        switch self {
+//        case .popular(let page), .latest(let page):
+//            return [Constants.Api.ParameterKey.lang: Locale.current.languageCode ?? "en_US",
+//                    Constants.Api.ParameterKey.apiKey: valueForAPIKey(keyname: "tmdb-apiv3"),
+//                    Constants.Api.ParameterKey.page: page]
+//        case .details:
+//            return [Constants.Api.ParameterKey.lang: Locale.current.languageCode ?? "en_US",
+//                    Constants.Api.ParameterKey.apiKey: valueForAPIKey(keyname: "tmdb-apiv3"),
+//                    Constants.Api.ParameterKey.appendToResponse: "videos"]
+//        }
     }
     
     private var baseUrl: String {
         switch self {
         case .popular, .latest, .details:
-            return "\(Constants.Api.baseUrl)/\(Constants.Api.apiVersion)"
+            return "\(Constants.Api.localUrl)"
         }
     }
     
@@ -62,7 +63,8 @@ enum MovieRouter: URLRequestConvertible {
     }
     
     private var headers: [String: String?] {
-        return ["Authorization": AuthSession.current.authToken]
+//        return ["Authorization": AuthSession.current.authToken]
+        return [:]
     }
     
     func asURLRequest() throws -> URLRequest {

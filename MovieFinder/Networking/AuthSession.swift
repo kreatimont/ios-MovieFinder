@@ -16,9 +16,10 @@ class AuthSession {
     init() {
     }
     
-    func update(authToken: String, username: String? = nil) {
+    func update(authToken: String, email: String? = nil) {
         self.authToken = authToken
-        self.username = username
+        self.email = email
+        Alamofire.SessionManager.default.adapter = AccessTokenAdapter(accessToken: authToken)
     }
     
     var authToken: String? {
@@ -34,15 +35,15 @@ class AuthSession {
         }
     }
     
-    var username: String? {
+    var email: String? {
         get {
             let defaults = UserDefaults.standard
-            let value: String? = defaults.value(forKey: "username") as? String
+            let value: String? = defaults.value(forKey: "email") as? String
             return value
         }
         set {
             let defaults = UserDefaults.standard
-            defaults.set(newValue, forKey: "username")
+            defaults.set(newValue, forKey: "email")
             defaults.synchronize()
         }
     }
@@ -58,8 +59,9 @@ extension AuthSession {
     func close(rememberCredetionals: Bool = true) {
         self.authToken = nil
         Alamofire.SessionManager.default.session.getAllTasks { (tasks) in tasks.forEach { $0.cancel() } }
+        Alamofire.SessionManager.default.adapter = nil
         if !rememberCredetionals {
-            self.username = nil
+            self.email = nil
         }
     }
     

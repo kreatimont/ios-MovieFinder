@@ -123,39 +123,34 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     private func fetchMovies(page: Int = 1) {
         self.downloading = true
-        MovieClient.popular(page: page) { (result) in
+        _ = MovieClient.popular(page: page) { (movieResponse, error) in
             self.downloading = false
             self.showCollectionView()
             self.refreshControl.endRefreshing()
-            switch result {
-            case .success:
-                guard let dataDict = result.value as? [String: AnyObject] else {
-                    self.showAlert(title: nil, message: "Bad format", buttonTitle: "OK", handler: nil)
-                    return
+            
+            if let response = movieResponse {
+                var deletePaths = [IndexPath]()
+                if page == 1 {
+                    for i in 0..<self.movies.count {
+                        deletePaths.append(IndexPath(row: i, section: 0))
+                    }
+                    self.movies.removeAll()
                 }
-                if let response = Response(with: dataDict) {
-                    var deletePaths = [IndexPath]()
-                    if page == 1 {
-                        for i in 0..<self.movies.count {
-                            deletePaths.append(IndexPath(row: i, section: 0))
-                        }
-                        self.movies.removeAll()
-                    }
-                    var insertIndexPaths = [IndexPath]()
-                    for i in self.movies.count...(self.movies.count + response.results.count - 1) {
-                        insertIndexPaths.append(IndexPath(row: i, section: 0))
-                    }
-                    self.movies.append(contentsOf: response.results)
-                    DispatchQueue.main.async {
-                        self.collectionView.performBatchUpdates({
-                            self.collectionView.deleteItems(at: deletePaths)
-                            self.collectionView.insertItems(at: insertIndexPaths)
-                        }, completion: nil)
-                    }
+                var insertIndexPaths = [IndexPath]()
+                for i in self.movies.count...(self.movies.count + response.results.count - 1) {
+                    insertIndexPaths.append(IndexPath(row: i, section: 0))
                 }
-            case .failure(let error):
-                self.showAlert(title: nil, message: error.localizedDescription, buttonTitle: "OK", handler: nil)
+                self.movies.append(contentsOf: response.results)
+                DispatchQueue.main.async {
+                    self.collectionView.performBatchUpdates({
+                        self.collectionView.deleteItems(at: deletePaths)
+                        self.collectionView.insertItems(at: insertIndexPaths)
+                    }, completion: nil)
+                }
+            } else {
+                self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
             }
+            
         }
         
     }

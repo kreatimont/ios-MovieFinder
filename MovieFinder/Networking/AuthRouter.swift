@@ -44,7 +44,7 @@ enum AuthRouter: URLRequestConvertible {
     private var baseUrl: String {
         switch self {
         case .login, .signup:
-            return "\(Constants.Api.baseUrl)"
+            return "\(Constants.Api.localUrl)"
         }
     }
     

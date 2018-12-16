@@ -6,7 +6,7 @@
 //  Copyright © 2018 kreatimont. All rights reserved.
 //
 
-class Response: Codable {
+class MovieResponse: Codable {
     
     let page: Int
     let totalResults: Int?
@@ -20,7 +20,7 @@ class Response: Codable {
         case results = "results"
     }
     
-    init?(with dict: [String: AnyObject]) {
+    init?(with dict: [String: Any?]) {
         guard let page = dict[CodingKeys.page.rawValue] as? Int else { return nil }
         self.page = page
         

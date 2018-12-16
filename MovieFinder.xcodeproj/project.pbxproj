@@ -23,7 +23,7 @@
 		0590212821A2D7D600E91FCC /* Color+MovieFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590212721A2D7D600E91FCC /* Color+MovieFinder.swift */; };
 		0590212B21A2D90F00E91FCC /* NavigationController+lightContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590212A21A2D90F00E91FCC /* NavigationController+lightContent.swift */; };
 		0590212E21A2DAD000E91FCC /* MovieCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590212D21A2DAD000E91FCC /* MovieCell.swift */; };
-		0590213221A2DCF000E91FCC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213121A2DCEF00E91FCC /* Response.swift */; };
+		0590213221A2DCF000E91FCC /* MovieResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213121A2DCEF00E91FCC /* MovieResponse.swift */; };
 		0590213421A2DD0900E91FCC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213321A2DD0900E91FCC /* Movie.swift */; };
 		0590213621A2DD3600E91FCC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213521A2DD3600E91FCC /* Video.swift */; };
 		0590213921A2DD7A00E91FCC /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0590213821A2DD7A00E91FCC /* Constants.swift */; };
@@ -77,7 +77,7 @@
 		0590212721A2D7D600E91FCC /* Color+MovieFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+MovieFinder.swift"; sourceTree = "<group>"; };
 		0590212A21A2D90F00E91FCC /* NavigationController+lightContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NavigationController+lightContent.swift"; sourceTree = "<group>"; };
 		0590212D21A2DAD000E91FCC /* MovieCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCell.swift; sourceTree = "<group>"; };
-		0590213121A2DCEF00E91FCC /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
+		0590213121A2DCEF00E91FCC /* MovieResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieResponse.swift; sourceTree = "<group>"; };
 		0590213321A2DD0900E91FCC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		0590213521A2DD3600E91FCC /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		0590213821A2DD7A00E91FCC /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -244,9 +244,9 @@
 			isa = PBXGroup;
 			children = (
 				05A81D6A21BE6BCA005559EB /* AuthSession.swift */,
-				0590213A21A2DDCF00E91FCC /* ApiClient.swift */,
 				0590213B21A2DDCF00E91FCC /* MovieRouter.swift */,
 				05A81D6C21BE6DE8005559EB /* AuthRouter.swift */,
+				0590213A21A2DDCF00E91FCC /* ApiClient.swift */,
 				0590213021A2DCD600E91FCC /* Model */,
 			);
 			path = Networking;
@@ -255,7 +255,7 @@
 		0590213021A2DCD600E91FCC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				0590213121A2DCEF00E91FCC /* Response.swift */,
+				0590213121A2DCEF00E91FCC /* MovieResponse.swift */,
 				0590213321A2DD0900E91FCC /* Movie.swift */,
 				0590213521A2DD3600E91FCC /* Video.swift */,
 			);
@@ -440,7 +440,7 @@
 				05AEB17921B4719D008944D5 /* LoginViewController.swift in Sources */,
 				0590214821A2F0DE00E91FCC /* DetailsMovieViewController.swift in Sources */,
 				0590213F21A2DDF600E91FCC /* ApiKeys.swift in Sources */,
-				0590213221A2DCF000E91FCC /* Response.swift in Sources */,
+				0590213221A2DCF000E91FCC /* MovieResponse.swift in Sources */,
 				05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */,
 				05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */,
 				05AEB18121B48BDE008944D5 /* Navigator.swift in Sources */,

@@ -9,6 +9,7 @@
 struct Constants {
     
     struct Api {
+        static let localUrl = "http://localhost:3000"
         static let baseUrl = "https://api.themoviedb.org"
         static let apiVersion = "3"
         static let imageUrl = "https://image.tmdb.org/t/p/"
@@ -22,7 +23,7 @@ struct Constants {
             static let page = "page"
             static let appendToResponse = "append_to_response"
             
-            static let username = "username"
+            static let username = "user"
             static let password = "password"
             static let email = "email"
             

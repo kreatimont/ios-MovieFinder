@@ -154,16 +154,59 @@ class SignUpViewController: UIViewController, Alertable {
         tap.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tap)
         
+        self.fillWithTestData()
+    }
+    
+    func fillWithTestData() {
+        self.emailField.text = "nadtoka.alexandr@gmail.com"
+        self.usernameField.text = "test"
+        self.passwordField.text = "12345678"
     }
     
     //MARK: - action
     
     @objc func handleLoginTap(_ sender: Any?) {
-        Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+        guard let email = self.emailField.text, email.count > 0 else {
+            self.showAlert(title: nil, message: "Please, enter email!", buttonTitle: "OK", handler: nil)
+            self.emailField.becomeFirstResponder()
+            return
+        }
+        if !isValidEmail(email: email) {
+            self.showAlert(title: nil, message: "Please, enter valid email!", buttonTitle: "OK", handler: nil)
+            return
+        }
+        
+        guard let username = self.usernameField.text, email.count > 0 else {
+            self.showAlert(title: nil, message: "Please, enter username!", buttonTitle: "OK", handler: nil)
+            self.usernameField.becomeFirstResponder()
+            return
+        }
+        
+        guard let password = self.passwordField.text, email.count > 0 else {
+            self.showAlert(title: nil, message: "Please, enter password!", buttonTitle: "OK", handler: nil)
+            self.passwordField.becomeFirstResponder()
+            return
+        }
+        
+        _ = AuthClient.register(email: email, user: username, password: password) { (token, error) in
+            if let sToken = token {
+                AuthSession.current.update(authToken: sToken, email: email)
+                Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+            } else {
+                self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+            }
+        }
+        
+        
     }
     
     @objc func handleBackToLoginTap(_ sender: Any?) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    func isValidEmail(email: String) -> Bool {
+        let regex = try! NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+        return regex.firstMatch(in: email, options: [], range: NSRange(location: 0, length: email.count)) != nil
     }
     
 }
