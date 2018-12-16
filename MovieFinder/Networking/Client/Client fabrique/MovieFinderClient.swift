@@ -79,7 +79,7 @@ class MovieFinderClient: MoviesAbstractClient {
                 completion?(nil, error.localizedDescription)
             }
             
-            }.log()
+        }.log()
     }
     
 }

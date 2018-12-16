@@ -29,12 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func configureAppearance() {
         //TODO: add default black appearance
-        
-    }
-    
-    func assemblyViewController() -> UIViewController {
-        let popularMoviesViewController = PopularMoviesViewController()
-        return NavigationControllerLightStatusBar(rootViewController: popularMoviesViewController)
     }
     
     //MARK: application actions

@@ -36,7 +36,7 @@ class Navigator {
         case .login:
             destinationController = LoginViewController()
         case .popularMovies:
-            destinationController = PopularMoviesViewController()
+            destinationController = PopularMoviesViewController(client: MovieFinderClient())
         }
         
         if wrap == .navigation {
@@ -63,7 +63,7 @@ class Navigator {
         let tabBarController = UITabBarController()
         tabBarController.tabBar.barStyle = .black
         
-        let popular = PopularMoviesViewController()
+        let popular = PopularMoviesViewController(client: MovieFinderClient())
         popular.tabBarItem = UITabBarItem(title: "Popular", image: UIImage(named: "ic_popular"), selectedImage: nil)
         
         let account = AccountViewController()

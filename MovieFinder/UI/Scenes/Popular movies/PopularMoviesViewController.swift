@@ -75,6 +75,17 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     var downloading = false
     
+    var client: MoviesAbstractClient
+    
+    init(client: MoviesAbstractClient) {
+        self.client = client
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -123,7 +134,8 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     private func fetchMovies(page: Int = 1) {
         self.downloading = true
-        MovieFinderClient().top(page: page) { (movieResponse, error) in
+        
+        self.client.top(page: page) { (movieResponse, error) in
             self.downloading = false
             self.showCollectionView()
             self.refreshControl.endRefreshing()
@@ -182,7 +194,7 @@ extension PopularMoviesViewController: UICollectionViewDelegateFlowLayout {
 extension PopularMoviesViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailsMovieContoller = DetailsMovieViewController(movie: self.movies[indexPath.item])
+        let detailsMovieContoller = DetailsMovieViewController(movie: self.movies[indexPath.item], client: TMDbClient())
         self.navigationController?.pushViewController(detailsMovieContoller, animated: true)
     }
     

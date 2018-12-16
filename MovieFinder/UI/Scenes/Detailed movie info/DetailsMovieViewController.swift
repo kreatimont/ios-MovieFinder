@@ -107,8 +107,11 @@ class DetailsMovieViewController: UIViewController, Alertable {
     
     var movie: Movie
     
-    init(movie: Movie) {
+    var client: MoviesAbstractClient
+    
+    init(movie: Movie, client: MoviesAbstractClient) {
         self.movie = movie
+        self.client = client
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -211,7 +214,7 @@ class DetailsMovieViewController: UIViewController, Alertable {
     //MARK: - private
     
     func fetchDetails(id: Int) {
-        TMDbClient().details(id: id) { (movie, error) in
+        self.client.details(id: id) { (movie, error) in
             if let mov = movie {
                 self.movie = mov
                 DispatchQueue.main.async {
