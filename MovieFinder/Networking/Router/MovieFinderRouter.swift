@@ -14,11 +14,16 @@ enum MovieFinderRouter: URLRequestConvertible {
     case latest(page: Int)
     case details(id: Int)
     case search(name: String)
+    case addToWatchLater(movieId: Int)
+    case removeFromWatchLater(movieId: Int)
+    case userProfile(id: Int)
     
     private var method: HTTPMethod {
         switch self {
-        case .top, .latest, .details, .search:
+        case .top, .latest, .details, .search, .userProfile:
             return .get
+        case .addToWatchLater, .removeFromWatchLater:
+            return .post
         }
     }
     
@@ -32,6 +37,12 @@ enum MovieFinderRouter: URLRequestConvertible {
             return "/movies/\(id)"
         case .search:
             return "/movies/search"
+        case .userProfile(let id):
+            return "/profile/\(id)"
+        case .addToWatchLater:
+            return "/profile/addWatchLater"
+        case .removeFromWatchLater:
+            return "/profile/removeWatchLater"
         }
     }
     
@@ -39,16 +50,19 @@ enum MovieFinderRouter: URLRequestConvertible {
         switch self {
         case .top(let page), .latest(let page):
             return [Constants.Api.ParameterKey.page: page]
-        case .details:
+        case .details, .userProfile:
             return nil
         case .search(let name):
             return [Constants.Api.ParameterKey.searchName: name]
+        case .addToWatchLater(let movieId), .removeFromWatchLater(let movieId):
+            return [Constants.Api.ParameterKey.userId: AuthSession.current.userId!,
+                Constants.Api.ParameterKey.movieId: movieId]
         }
     }
     
     private var baseUrl: String {
         switch self {
-        case .top, .latest, .details, .search:
+        case .top, .latest, .details, .search, .userProfile, .addToWatchLater, .removeFromWatchLater:
             return "\(Constants.Api.localUrl)"
         }
     }

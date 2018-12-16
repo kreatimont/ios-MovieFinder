@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		051E57C921C70BFF00BFBF23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E57C821C70BFF00BFBF23 /* User.swift */; };
 		059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059020F021A2CE1A00E91FCC /* AppDelegate.swift */; };
 		059020F621A2CE1A00E91FCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059020F421A2CE1A00E91FCC /* Main.storyboard */; };
 		059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059020F721A2CE1A00E91FCC /* MovieFinder.xcdatamodeld */; };
@@ -64,6 +65,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		051E57C821C70BFF00BFBF23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		059020ED21A2CE1A00E91FCC /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059020F021A2CE1A00E91FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059020F521A2CE1A00E91FCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				0590213121A2DCEF00E91FCC /* MovieResponse.swift */,
 				0590213321A2DD0900E91FCC /* Movie.swift */,
 				0590213521A2DD3600E91FCC /* Video.swift */,
+				051E57C821C70BFF00BFBF23 /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				0590212B21A2D90F00E91FCC /* NavigationController+lightContent.swift in Sources */,
 				05A4B18521C6B4DE00E56646 /* MovieFinderClient.swift in Sources */,
 				05A4B18721C6B62100E56646 /* TMDbClient.swift in Sources */,
+				051E57C921C70BFF00BFBF23 /* User.swift in Sources */,
 				05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */,
 				059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */,
 				05AEB18621B48E3A008944D5 /* AccountViewController.swift in Sources */,

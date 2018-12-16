@@ -11,6 +11,7 @@ import Alamofire
 typealias LoginCompletion = ((_ token: String?, _ userId: Int?, _ error: String?) -> ())
 typealias RegisterCompletion = ((_ success: Bool, _ error: String?) -> ())
 typealias SearchCompletion = ((_ movies: [Movie], _ error: String?) -> ())
+typealias ProfileCompletion = ((_ user: User?, _ error: String?) -> ())
 
 class MovieFinderClient: MoviesAbstractClient {
     
@@ -36,7 +37,6 @@ class MovieFinderClient: MoviesAbstractClient {
             
         }.log()
     }
-    
     
     func top(page: Int, completion: ((MovieResponse?, String?) -> ())?) {
         _ = Alamofire.request(MovieFinderRouter.top(page: page)).responseData { (response: DataResponse) in
@@ -88,6 +88,80 @@ class MovieFinderClient: MoviesAbstractClient {
             
             }.log()
     }
+    
+    func profile(id: Int, completion: ProfileCompletion?) -> DataRequest {
+        return Alamofire.request(MovieFinderRouter.userProfile(id: id)).responseData { (response: DataResponse) in
+            
+            switch response.result {
+            case .success(let data):
+                
+                if let json = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any?], let safeJson = json {
+                    
+                    if let user = User(with: safeJson) {
+                        completion?(user, nil)
+                    } else {
+                        completion?(nil, "Bad response format")
+                    }
+                    
+                } else {
+                    completion?(nil, "Bad response format")
+                }
+                
+            case .failure(let error):
+                completion?(nil, error.localizedDescription)
+            }
+            
+        }.log()
+    }
+    
+    func addToWatchLater(movieId: Int, completion: RegisterCompletion?) -> DataRequest {
+        return Alamofire.request(MovieFinderRouter.addToWatchLater(movieId: movieId)).responseData { (response: DataResponse) in
+            
+            switch response.result {
+            case .success(let data):
+            
+                if let code = response.response?.statusCode {
+                    switch code {
+                    case 200...299: completion?(true, nil)
+                    default: completion?(false, String(data: data, encoding: .utf8))
+                    }
+                    
+                } else {
+                    completion?(false, nil)
+                }
+                
+            case .failure(let error):
+                completion?(false, error.localizedDescription)
+            }
+            
+            }.log()
+    }
+    
+    func removeFromWatchLater(movieId: Int, completion: RegisterCompletion?) -> DataRequest {
+        return Alamofire.request(MovieFinderRouter.removeFromWatchLater(movieId: movieId)).responseData { (response: DataResponse) in
+            
+            switch response.result {
+            case .success(let data):
+                
+                if let code = response.response?.statusCode {
+                    switch code {
+                    case 200...299: completion?(true, nil)
+                    default: completion?(false, String(data: data, encoding: .utf8))
+                    }
+                    
+                } else {
+                    completion?(false, nil)
+                }
+                
+            case .failure(let error):
+                completion?(false, error.localizedDescription)
+            }
+            
+            }.log()
+    }
+    
+    
+    //AUTH PART
     
     static func register(email: String, user: String, password: String, completion: RegisterCompletion?) -> DataRequest {
         return Alamofire.request(MovieFinderAuthRouter.signup(username: user, password: password, email: email)).responseData { (response: DataResponse) in

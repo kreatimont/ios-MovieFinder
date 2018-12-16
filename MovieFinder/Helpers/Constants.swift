@@ -24,6 +24,9 @@ struct Constants {
             static let appendToResponse = "append_to_response"
             static let searchName = "name"
             
+            static let userId = "userId"
+            static let movieId = "movieId"
+            
             static let username = "user"
             static let password = "password"
             static let email = "email"
