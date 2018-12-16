@@ -54,6 +54,13 @@ extension AccountViewController: UITableViewDelegate {
                 UIPasteboard.general.string = AuthSession.current.authToken
             }
         }
+        if indexPath.section == 1 {
+            if indexPath.row == 0 {
+                
+            } else if indexPath.row == 1 {
+                self.showAlert(title: nil, message: "Bought movies section is currently unavailable", buttonTitle: "OK", handler: nil)
+            }
+        }
         if indexPath.section == 2 {
             self.handleLogoutTap(nil)
         }
@@ -91,9 +98,11 @@ extension AccountViewController: UITableViewDataSource {
             if indexPath.row == 0 {
                 cell.textLabel?.text = "Email"
                 cell.detailTextLabel?.text = AuthSession.current.email
+                cell.selectionStyle = .none
             } else if indexPath.row == 1 {
                 cell.textLabel?.text = "User id"
                 cell.detailTextLabel?.text = "\(AuthSession.current.userId ?? -1)"
+                cell.selectionStyle = .none
             } else if indexPath.row == 2 {
                 let textCell = TextViewCell(style: .default, reuseIdentifier: "textViewCell")
                 textCell.backgroundColor = Color.cellBackground
@@ -102,12 +111,12 @@ extension AccountViewController: UITableViewDataSource {
                 textCell.textLabel?.textColor = Color.mainText
                 textCell.textLabel?.numberOfLines = 5
                 textCell.textLabel?.font = UIFont(name: "Courier", size: 15)
+                textCell.selectedBackgroundView = generateBgViewForSelectedCell()
                 return textCell
             }
             
             cell.textLabel?.textColor = Color.mainText
             cell.backgroundColor = Color.cellBackground
-            cell.selectedBackgroundView = generateBgViewForSelectedCell()
             
             return cell
         } else if indexPath.section == 1 {
