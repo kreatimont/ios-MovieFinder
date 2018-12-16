@@ -188,7 +188,7 @@ class SignUpViewController: UIViewController, Alertable {
             return
         }
         
-        _ = AuthClient.register(email: email, user: username, password: password) { (token, error) in
+        _ = MovieFinderClient.register(email: email, user: username, password: password) { (token, error) in
             if let sToken = token {
                 AuthSession.current.update(authToken: sToken, email: email)
                 Navigator.shared.route(to: .popularMovies, wrap: .tabBar)

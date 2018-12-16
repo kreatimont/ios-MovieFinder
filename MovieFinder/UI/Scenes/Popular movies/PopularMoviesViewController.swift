@@ -123,7 +123,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     private func fetchMovies(page: Int = 1) {
         self.downloading = true
-        _ = MovieClient.top(page: page) { (movieResponse, error) in
+        MovieFinderClient().top(page: page) { (movieResponse, error) in
             self.downloading = false
             self.showCollectionView()
             self.refreshControl.endRefreshing()
@@ -150,9 +150,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
             } else {
                 self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
             }
-            
         }
-        
     }
     
 }

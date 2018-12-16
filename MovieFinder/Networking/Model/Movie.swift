@@ -28,7 +28,7 @@ class Movie: Codable {
         case videos = "videos"
     }
     
-    init?(with dict: [String: AnyObject]) {
+    init?(with dict: [String: Any?]) {
         guard let id = dict[CodingKeys.id.rawValue] as? Int else { return nil }
         self.id = id
         guard let title = dict[CodingKeys.title.rawValue] as? String else { return nil }

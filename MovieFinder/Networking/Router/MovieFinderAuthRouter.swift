@@ -8,7 +8,7 @@
 
 import Alamofire
 
-enum AuthRouter: URLRequestConvertible {
+enum MovieFinderAuthRouter: URLRequestConvertible {
     
     case login(username: String, password: String)
     case signup(username: String, password: String, email: String)

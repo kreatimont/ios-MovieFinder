@@ -211,21 +211,14 @@ class DetailsMovieViewController: UIViewController, Alertable {
     //MARK: - private
     
     func fetchDetails(id: Int) {
-        MovieClient.details(id: id) { (result) in
-            switch result {
-            case .success:
-                guard let dataDict = result.value as? [String: AnyObject] else {
-                    self.showAlert(title: nil, message: "Bad format error", buttonTitle: "OK", handler: nil)
-                    return
+        TMDbClient().details(id: id) { (movie, error) in
+            if let mov = movie {
+                self.movie = mov
+                DispatchQueue.main.async {
+                    self.trailersCollectionView.reloadData()
                 }
-                if let response = Movie(with: dataDict) {
-                    self.movie = response
-                    DispatchQueue.main.async {
-                        self.trailersCollectionView.reloadData()
-                    }
-                }
-            case .failure(let error):
-                self.showAlert(title: nil, message: error.localizedDescription, buttonTitle: "OK", handler: nil)
+            } else {
+                self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
             }
         }
     }
