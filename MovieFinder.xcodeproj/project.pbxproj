@@ -56,6 +56,9 @@
 		05C9433C21CAD70F00CEAF5A /* SuccessIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9433921CAD70F00CEAF5A /* SuccessIndicator.swift */; };
 		05C9433D21CAD70F00CEAF5A /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9433A21CAD70F00CEAF5A /* LoadingOverlay.swift */; };
 		05C9433E21CAD70F00CEAF5A /* FailureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9433B21CAD70F00CEAF5A /* FailureIndicator.swift */; };
+		05C9434121CAEBDF00CEAF5A /* BuyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9434021CAEBDF00CEAF5A /* BuyButton.swift */; };
+		05C9434421CAF2AF00CEAF5A /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9434321CAF2AF00CEAF5A /* CoreDataManager.swift */; };
+		05C9434721CAF2F400CEAF5A /* WatchlistMovie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9434521CAF2F400CEAF5A /* WatchlistMovie+CoreDataClass.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +125,9 @@
 		05C9433921CAD70F00CEAF5A /* SuccessIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessIndicator.swift; sourceTree = "<group>"; };
 		05C9433A21CAD70F00CEAF5A /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
 		05C9433B21CAD70F00CEAF5A /* FailureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailureIndicator.swift; sourceTree = "<group>"; };
+		05C9434021CAEBDF00CEAF5A /* BuyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButton.swift; sourceTree = "<group>"; };
+		05C9434321CAF2AF00CEAF5A /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		05C9434521CAF2F400CEAF5A /* WatchlistMovie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WatchlistMovie+CoreDataClass.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +177,7 @@
 		059020EF21A2CE1A00E91FCC /* MovieFinder */ = {
 			isa = PBXGroup;
 			children = (
+				05C9434221CAF27200CEAF5A /* Core Data */,
 				0590213721A2DD6F00E91FCC /* Helpers */,
 				0590212F21A2DCCA00E91FCC /* Networking */,
 				0590212121A2D65300E91FCC /* UI */,
@@ -178,7 +185,6 @@
 				059020FA21A2CE1B00E91FCC /* Assets.xcassets */,
 				059020FC21A2CE1B00E91FCC /* LaunchScreen.storyboard */,
 				059020FF21A2CE1B00E91FCC /* Info.plist */,
-				059020F721A2CE1A00E91FCC /* MovieFinder.xcdatamodeld */,
 			);
 			path = MovieFinder;
 			sourceTree = "<group>";
@@ -244,6 +250,7 @@
 				0590212721A2D7D600E91FCC /* Color+MovieFinder.swift */,
 				05AEB17A21B477E7008944D5 /* InputTextField.swift */,
 				05AEB17C21B47B25008944D5 /* ButtonBg.swift */,
+				05C9434021CAEBDF00CEAF5A /* BuyButton.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -389,6 +396,16 @@
 				05C9433921CAD70F00CEAF5A /* SuccessIndicator.swift */,
 			);
 			path = "Loading overlay";
+			sourceTree = "<group>";
+		};
+		05C9434221CAF27200CEAF5A /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				059020F721A2CE1A00E91FCC /* MovieFinder.xcdatamodeld */,
+				05C9434321CAF2AF00CEAF5A /* CoreDataManager.swift */,
+				05C9434521CAF2F400CEAF5A /* WatchlistMovie+CoreDataClass.swift */,
+			);
+			path = "Core Data";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -552,12 +569,15 @@
 				05A81D6621BE5172005559EB /* SwitchCell.swift in Sources */,
 				059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */,
 				05AEB18621B48E3A008944D5 /* AccountViewController.swift in Sources */,
+				05C9434121CAEBDF00CEAF5A /* BuyButton.swift in Sources */,
 				05AEB17F21B4832A008944D5 /* SignUpViewController.swift in Sources */,
+				05C9434721CAF2F400CEAF5A /* WatchlistMovie+CoreDataClass.swift in Sources */,
 				05AEB17D21B47B25008944D5 /* ButtonBg.swift in Sources */,
 				0590212521A2D6B600E91FCC /* PopularMoviesViewController.swift in Sources */,
 				05C9433E21CAD70F00CEAF5A /* FailureIndicator.swift in Sources */,
 				0590212821A2D7D600E91FCC /* Color+MovieFinder.swift in Sources */,
 				05A4B18F21C6EC1E00E56646 /* SearchResultViewController.swift in Sources */,
+				05C9434421CAF2AF00CEAF5A /* CoreDataManager.swift in Sources */,
 				0590213621A2DD3600E91FCC /* Video.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

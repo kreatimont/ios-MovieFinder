@@ -99,6 +99,20 @@ class DetailsMovieViewController: UIViewController, Alertable {
         return view
     }()
     
+    private lazy var addToWatchLaterButton: BuyButton = {
+        let butBtn = BuyButton()
+        butBtn.setTitle("Watch later".uppercased(), for: .normal)
+        butBtn.addTarget(self, action: #selector(handleAddToWatchLater(_:)), for: .touchUpInside)
+        return butBtn
+    }()
+    
+    private lazy var addIndicator: UIActivityIndicatorView = {
+        let av = UIActivityIndicatorView(style: .white)
+        av.hidesWhenStopped = true
+        av.color = self.view.tintColor
+        return av
+    }()
+    
     var itemsPerRow: CGFloat = 1
     var sectionInsets: UIEdgeInsets {
         return UIEdgeInsets(top: 0.0, left: 8.0, bottom: 0.0, right: 8.0)
@@ -106,8 +120,10 @@ class DetailsMovieViewController: UIViewController, Alertable {
     var interitemSpace: CGFloat = 8
     
     var movie: Movie
+    var movieInWatchlist: Bool = false
     
     var client: MoviesAbstractClient
+    private var movieFinderClient = MovieFinderClient()
     
     init(movie: Movie, client: MoviesAbstractClient) {
         self.movie = movie
@@ -164,6 +180,14 @@ class DetailsMovieViewController: UIViewController, Alertable {
             make.right.equalToSuperview().inset(8)
         }
         
+        self.view.addSubview(addToWatchLaterButton)
+        addToWatchLaterButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().inset(8)
+            make.width.equalTo(104)
+            make.height.equalTo(22)
+            make.bottom.equalTo(self.posterImageView)
+        }
+        
         let separator = UIView()
         separator.backgroundColor = Color.separator
         
@@ -209,9 +233,83 @@ class DetailsMovieViewController: UIViewController, Alertable {
         self.aboutLabel.text = movie.description ?? ""
         self.fetchDetails(id: movie.id)
         
+        let savedToWatchlist = CoreDataManager.shared.getWatchlistMovies().map { Int($0.id) }.contains(self.movie.id)
+        self.adaptWatchLaterButtonTo(remove: savedToWatchlist)
+        self.movieInWatchlist = savedToWatchlist
+    }
+    
+    private func adaptWatchLaterButtonTo(remove: Bool) {
+        if remove {
+            self.addToWatchLaterButton.setTitle("Remove".uppercased(), for: .normal)
+            self.addToWatchLaterButton.tintColor = Color.destructive
+            self.addToWatchLaterButton.layer.borderColor = Color.destructive.cgColor
+            self.addToWatchLaterButton.setTitleColor(Color.destructive, for: .normal)
+            self.addToWatchLaterButton.setTitleColor(Color.background, for: .highlighted)
+        } else {
+            self.addToWatchLaterButton.setTitle("Watch later".uppercased(), for: .normal)
+            self.addToWatchLaterButton.tintColor = self.view.tintColor
+            self.addToWatchLaterButton.layer.borderColor = self.view.tintColor.cgColor
+            self.addToWatchLaterButton.setTitleColor(self.view.tintColor, for: .normal)
+            self.addToWatchLaterButton.setTitleColor(Color.background, for: .highlighted)
+        }
     }
     
     //MARK: - private
+    
+    @objc func handleAddToWatchLater(_ sender: Any?) {
+        self.addToWatchLaterButton.isHidden = true
+        self.view.addSubview(addIndicator)
+        addIndicator.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(self.addToWatchLaterButton)
+        }
+        addIndicator.startAnimating()
+        
+        if self.movieInWatchlist {
+            
+            _ = movieFinderClient.removeFromWatchLater(movieId: self.movie.id) { [weak self] (success, error) in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.addIndicator.removeFromSuperview()
+                    self.addToWatchLaterButton.isHidden = false
+                    if success {
+                        if CoreDataManager.shared.removeMovieWatchlist(id: self.movie.id) {
+                            self.adaptWatchLaterButtonTo(remove: false)
+                            self.movieInWatchlist = false
+                        } else {
+                            self.adaptWatchLaterButtonTo(remove: true)
+                            self.movieInWatchlist = true
+                        }
+                    } else {
+                        self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+                    }
+                }
+            }
+            
+        } else {
+            
+            _ = movieFinderClient.addToWatchLater(movieId: self.movie.id) { [weak self] (success, error) in
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.addIndicator.removeFromSuperview()
+                    self.addToWatchLaterButton.isHidden = false
+                    if success {
+                        if CoreDataManager.shared.saveMovieWatchlist(id: self.movie.id, name: self.movie.title) {
+                            self.adaptWatchLaterButtonTo(remove: true)
+                            self.movieInWatchlist = true
+                        } else {
+                            self.adaptWatchLaterButtonTo(remove: false)
+                            self.movieInWatchlist = false
+                        }
+                    } else {
+                        self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+                    }
+                }
+            }
+            
+        }
+        
+        
+    }
     
     func fetchDetails(id: Int) {
         self.client.details(id: id) { (movie, error) in

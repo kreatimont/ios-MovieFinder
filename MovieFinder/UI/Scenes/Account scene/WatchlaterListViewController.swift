@@ -71,17 +71,14 @@ class WatchlaterListViewController: UIViewController, Alertable {
     private var interitemSpace: CGFloat = 8
     
     private var movies = [Movie]()
-    private var currentPage = 1
     
     var downloading = false
     
     var client: MoviesAbstractClient
     
-    private var moviesIds: [Int]
-    
-    init(client: MoviesAbstractClient, moviesIds: [Int]) {
+    init(client: MoviesAbstractClient, movies: [Movie]) {
         self.client = client
-        self.moviesIds = moviesIds
+        self.movies = movies
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -135,37 +132,15 @@ class WatchlaterListViewController: UIViewController, Alertable {
         self.collectionView.backgroundView = nil
     }
     
-    private func fetchMovies(page: Int = 1) {
+    private func fetchMovies() {
         self.downloading = true
         
-        self.client.top(page: page) { (movieResponse, error) in
-            self.downloading = false
-            self.showCollectionView()
-            self.refreshControl.endRefreshing()
-            
-            if let response = movieResponse {
-                var deletePaths = [IndexPath]()
-                if page == 1 {
-                    for i in 0..<self.movies.count {
-                        deletePaths.append(IndexPath(row: i, section: 0))
-                    }
-                    self.movies.removeAll()
-                }
-                var insertIndexPaths = [IndexPath]()
-                for i in self.movies.count...(self.movies.count + response.results.count - 1) {
-                    insertIndexPaths.append(IndexPath(row: i, section: 0))
-                }
-                self.movies.append(contentsOf: response.results)
-                DispatchQueue.main.async {
-                    self.collectionView.performBatchUpdates({
-                        self.collectionView.deleteItems(at: deletePaths)
-                        self.collectionView.insertItems(at: insertIndexPaths)
-                    }, completion: nil)
-                }
-            } else {
-                self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
-            }
-        }
+//        self.client.top(page: 1) { (movieResponse, error) in
+//            self.downloading = false
+//            self.showCollectionView()
+//            self.refreshControl.endRefreshing()
+//            
+//        }
     }
     
 }

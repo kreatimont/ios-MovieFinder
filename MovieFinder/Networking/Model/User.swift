@@ -14,7 +14,7 @@ class User {
     let email: String
     let serverId: String?
     let passwordHash: String?
-    var watchlaterMoviesIds: [Int]
+    var watchlaterMovies: [Movie]
     
     init?(with dict: [String: Any?]) {
         guard let id = dict["userId"] as? Int else { return nil }
@@ -34,11 +34,20 @@ class User {
         } else {
             self.passwordHash = nil
         }
+
+        print(dict)
         
-        if let moviesIDs = dict["movies_to_watch"] as? [Int] {
-            self.watchlaterMoviesIds = moviesIDs
+        if let moviesArray = dict["watch_later"] as? [[String: Any?]] {
+            var newMoview = [Movie]()
+            for data in moviesArray {
+                if let movie = Movie(with: data) {
+                    newMoview.append(movie)
+                }
+            }
+        
+            self.watchlaterMovies = newMoview
         } else {
-            self.watchlaterMoviesIds = []
+            self.watchlaterMovies = []
         }
         
     }
