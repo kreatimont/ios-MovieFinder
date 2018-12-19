@@ -228,7 +228,7 @@ extension PopularMoviesViewController: UICollectionViewDataSource {
         let movie = movies[indexPath.row]
         cell.title = movie.title
         cell.infoLabel.text = movie.yearString ?? ""
-        cell.ratingLabel.text = String(format: "%.1f", movie.voteCount)
+        cell.ratingLabel.text = movie.voteString
         return cell
     }
     

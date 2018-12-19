@@ -102,4 +102,8 @@ extension Movie {
         }
     }
     
+    var voteString: String {
+        return String(format: "%.1f", self.voteCount)
+    }
+    
 }
