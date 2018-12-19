@@ -201,8 +201,10 @@ class MovieFinderClient: MoviesAbstractClient {
                 } else {
                     
                     if let error = String(data: data, encoding: .utf8) {
+                        print("\(response.request?.url?.absoluteString ?? "") ❌: \(error)")
                         completion?(nil, nil, error)
                     } else {
+                        print("\(response.request?.url?.absoluteString ?? "") ❌")
                         completion?(nil, nil, "bad response")
                     }
                     

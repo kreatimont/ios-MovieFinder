@@ -190,6 +190,14 @@ class SignUpViewController: UIViewController, Alertable {
             return
         }
         
+        let loadingOverlay = LoadingOverlay(frame: self.view.frame)
+        loadingOverlay.alpha = 0
+        loadingOverlay.startAnimating()
+        self.view.addSubview(loadingOverlay)
+        
+        UIView.animate(withDuration: 0.1) {
+            loadingOverlay.alpha = 1
+        }
         
         _ = MovieFinderClient.register(email: email, user: username, password: password) { (success, error) in
             if success {
@@ -197,15 +205,26 @@ class SignUpViewController: UIViewController, Alertable {
                     if authToken != nil && userId != nil {
                         AuthSession.current.update(authToken: authToken!, email: email, userId: userId!)
                         DispatchQueue.main.async {
-                            Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+                            loadingOverlay.showSuccess(compeltion: {
+                                loadingOverlay.removeFromSuperview()
+                                Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+                            })
                         }
                     } else {
-                        self.showAlert(title: nil, message: lError, buttonTitle: "OK", handler: nil)
+                        DispatchQueue.main.async {
+                            loadingOverlay.showFail(compeltion: {
+                                loadingOverlay.removeFromSuperview()
+                                self.showAlert(title: nil, message: lError, buttonTitle: "OK", handler: nil)
+                            })
+                        }
                     }
                 })
             } else {
                 DispatchQueue.main.async {
-                    self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+                    loadingOverlay.showFail(compeltion: {
+                        loadingOverlay.removeFromSuperview()
+                        self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
+                    })
                 }
             }
         }

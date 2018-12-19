@@ -19,8 +19,9 @@ protocol MoviesAbstractClient {
 extension DataRequest {
     
     func log() -> Self {
-        print("[Network] \(request?.httpMethod ?? "") \(request?.url?.absoluteString ?? "") ✅")
-        return self
+        return responseData(completionHandler: { (data) in
+            print("[Network] \(self.request?.httpMethod ?? "") \(self.request?.url?.absoluteString ?? "") \(data.result.isSuccess ? "✅" : "❌") \(!data.result.isSuccess ? (data.result.error?.localizedDescription ?? "") : "")")
+        })
     }
     
 }

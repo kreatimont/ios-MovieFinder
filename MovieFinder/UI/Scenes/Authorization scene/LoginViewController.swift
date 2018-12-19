@@ -160,6 +160,8 @@ class LoginViewController: UIViewController, Alertable {
         self.passwordField.text = "12345678"
     }
     
+    
+    
     //MARK: - action
     
     @objc func handleLoginTap(_ sender: Any?) {
@@ -184,14 +186,31 @@ class LoginViewController: UIViewController, Alertable {
             return
         }
         
+        let loadingOverlay = LoadingOverlay(frame: self.view.frame)
+        loadingOverlay.alpha = 0
+        loadingOverlay.startAnimating()
+        self.view.addSubview(loadingOverlay)
+        
+        UIView.animate(withDuration: 0.1) {
+            loadingOverlay.alpha = 1
+        }
+        
         _ = MovieFinderClient.login(email: email, password: password, completion: { (authToken, userId, lError) in
             if authToken != nil && userId != nil {
                 AuthSession.current.update(authToken: authToken!, email: email, userId: userId!)
                 DispatchQueue.main.async {
-                    Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+                    loadingOverlay.showSuccess(compeltion: {
+                        loadingOverlay.removeFromSuperview()
+                        Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+                    })
                 }
             } else {
-                self.showAlert(title: nil, message: lError, buttonTitle: "OK", handler: nil)
+                DispatchQueue.main.async {
+                    loadingOverlay.showFail(compeltion: {
+                        loadingOverlay.removeFromSuperview()
+                        self.showAlert(title: nil, message: lError, buttonTitle: "OK", handler: nil)
+                    })
+                }
             }
         })
         

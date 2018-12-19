@@ -53,6 +53,9 @@
 		05AEB17F21B4832A008944D5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB17E21B4832A008944D5 /* SignUpViewController.swift */; };
 		05AEB18121B48BDE008944D5 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB18021B48BDE008944D5 /* Navigator.swift */; };
 		05AEB18621B48E3A008944D5 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05AEB18521B48E3A008944D5 /* AccountViewController.swift */; };
+		05C9433C21CAD70F00CEAF5A /* SuccessIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9433921CAD70F00CEAF5A /* SuccessIndicator.swift */; };
+		05C9433D21CAD70F00CEAF5A /* LoadingOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9433A21CAD70F00CEAF5A /* LoadingOverlay.swift */; };
+		05C9433E21CAD70F00CEAF5A /* FailureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05C9433B21CAD70F00CEAF5A /* FailureIndicator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +119,9 @@
 		05AEB17E21B4832A008944D5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		05AEB18021B48BDE008944D5 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		05AEB18521B48E3A008944D5 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		05C9433921CAD70F00CEAF5A /* SuccessIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuccessIndicator.swift; sourceTree = "<group>"; };
+		05C9433A21CAD70F00CEAF5A /* LoadingOverlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingOverlay.swift; sourceTree = "<group>"; };
+		05C9433B21CAD70F00CEAF5A /* FailureIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FailureIndicator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -234,6 +240,7 @@
 		0590212621A2D7C200E91FCC /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				05C9433F21CAD71100CEAF5A /* Loading overlay */,
 				0590212721A2D7D600E91FCC /* Color+MovieFinder.swift */,
 				05AEB17A21B477E7008944D5 /* InputTextField.swift */,
 				05AEB17C21B47B25008944D5 /* ButtonBg.swift */,
@@ -374,6 +381,16 @@
 			path = "Account scene";
 			sourceTree = "<group>";
 		};
+		05C9433F21CAD71100CEAF5A /* Loading overlay */ = {
+			isa = PBXGroup;
+			children = (
+				05C9433A21CAD70F00CEAF5A /* LoadingOverlay.swift */,
+				05C9433B21CAD70F00CEAF5A /* FailureIndicator.swift */,
+				05C9433921CAD70F00CEAF5A /* SuccessIndicator.swift */,
+			);
+			path = "Loading overlay";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -511,6 +528,7 @@
 				05A4B19121C7027B00E56646 /* TextViewCell.swift in Sources */,
 				05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */,
 				05A4B17921C6B22000E56646 /* MovieFinderRouter.swift in Sources */,
+				05C9433C21CAD70F00CEAF5A /* SuccessIndicator.swift in Sources */,
 				05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */,
 				05A4B18C21C6EAE300E56646 /* SearchViewController.swift in Sources */,
 				05AEB18121B48BDE008944D5 /* Navigator.swift in Sources */,
@@ -526,6 +544,7 @@
 				059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */,
 				05A81D6921BE51AC005559EB /* LogoutCell.swift in Sources */,
 				0590212B21A2D90F00E91FCC /* NavigationController+lightContent.swift in Sources */,
+				05C9433D21CAD70F00CEAF5A /* LoadingOverlay.swift in Sources */,
 				05A4B18521C6B4DE00E56646 /* MovieFinderClient.swift in Sources */,
 				05A4B18721C6B62100E56646 /* TMDbClient.swift in Sources */,
 				051E57C921C70BFF00BFBF23 /* User.swift in Sources */,
@@ -536,6 +555,7 @@
 				05AEB17F21B4832A008944D5 /* SignUpViewController.swift in Sources */,
 				05AEB17D21B47B25008944D5 /* ButtonBg.swift in Sources */,
 				0590212521A2D6B600E91FCC /* PopularMoviesViewController.swift in Sources */,
+				05C9433E21CAD70F00CEAF5A /* FailureIndicator.swift in Sources */,
 				0590212821A2D7D600E91FCC /* Color+MovieFinder.swift in Sources */,
 				05A4B18F21C6EC1E00E56646 /* SearchResultViewController.swift in Sources */,
 				0590213621A2DD3600E91FCC /* Video.swift in Sources */,
