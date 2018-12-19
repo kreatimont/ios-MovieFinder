@@ -90,7 +90,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Top"
+        self.title = "Top rated"
         
         self.view.backgroundColor = Color.background
         collectionView.backgroundColor = Color.background

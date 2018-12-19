@@ -52,7 +52,7 @@ class WatchlaterListViewController: UIViewController, Alertable {
         let _emptyStubView = UIView()
         
         let label = UILabel()
-        label.text = "No data".uppercased()
+        label.text = "You can add films from \"Top\" list or search".uppercased()
         label.textColor = UIColor.gray
         
         _emptyStubView.addSubview(label)
@@ -93,7 +93,7 @@ class WatchlaterListViewController: UIViewController, Alertable {
         super.viewDidLoad()
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.title = "Top"
+        self.title = "My watchlist"
         
         self.view.backgroundColor = Color.background
         collectionView.backgroundColor = Color.background
