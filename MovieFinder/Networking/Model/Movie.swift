@@ -17,6 +17,8 @@ class Movie: Codable {
     let description: String?
     let year: Date?
     let videos: [Video]
+    let voteCount: Double
+    let popularityPercent: Double
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -26,6 +28,8 @@ class Movie: Codable {
         case year = "release_date"
         case posterPath = "poster_path"
         case videos = "videos"
+        case voteCount = "vote_average"
+        case popularityPercent = "popularity"
     }
     
     init?(with dict: [String: Any?]) {
@@ -36,6 +40,8 @@ class Movie: Codable {
         self.backdropPath = dict[CodingKeys.backdropPath.rawValue] as? String
         self.posterPath = dict[CodingKeys.posterPath.rawValue] as? String
         self.description = dict[CodingKeys.description.rawValue] as? String
+        self.voteCount = dict[CodingKeys.voteCount.rawValue] as? Double ?? 0.0
+        self.popularityPercent = dict[CodingKeys.popularityPercent.rawValue] as? Double ?? 0.0
         
         if let date = dict[CodingKeys.year.rawValue] as? String {
             self.year = self.dateFormatter.date(from: date)
@@ -84,6 +90,16 @@ extension Movie {
             return URL(string: "\(Constants.Api.imageUrl)/\(Constants.Api.defaultImageSize)\(path)")
         }
         return nil
+    }
+    
+    var yearString: String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYY"
+        if let date = self.year {
+            return dateFormatter.string(from: date)
+        } else {
+            return nil
+        }
     }
     
 }

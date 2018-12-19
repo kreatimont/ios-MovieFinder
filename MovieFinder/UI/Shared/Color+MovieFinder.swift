@@ -16,6 +16,7 @@ struct Color {
     static let mainText = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
     static let secondaryText = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.0)
     static let separator = UIColor(hexString: "#4f4f4f")
+    static let starColor = UIColor(hexString: "#ffc700")
     
 }
 

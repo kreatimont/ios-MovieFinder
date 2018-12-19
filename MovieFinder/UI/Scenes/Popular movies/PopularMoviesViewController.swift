@@ -225,7 +225,10 @@ extension PopularMoviesViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCell.identifier, for: indexPath) as! MovieCell
-        cell.title = movies[indexPath.row].title
+        let movie = movies[indexPath.row]
+        cell.title = movie.title
+        cell.infoLabel.text = movie.yearString ?? ""
+        cell.ratingLabel.text = String(format: "%.1f", movie.voteCount)
         return cell
     }
     

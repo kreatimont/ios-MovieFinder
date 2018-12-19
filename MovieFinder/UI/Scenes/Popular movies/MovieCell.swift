@@ -29,6 +29,33 @@ class MovieCell: UICollectionViewCell {
         return label
     }()
     
+    lazy var infoLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Color.secondaryText
+        label.numberOfLines = 1
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
+    lazy var starIcon: UIImageView = {
+        let imView = UIImageView()
+        imView.clipsToBounds = true
+        imView.image = UIImage(named: "star")?.withRenderingMode(.alwaysTemplate)
+        imView.tintColor = Color.starColor
+        imView.contentMode = .scaleAspectFit
+        return imView
+    }()
+    
+    lazy var ratingLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = Color.mainText
+        label.numberOfLines = 1
+        label.lineBreakMode = .byWordWrapping
+        label.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+        return label
+    }()
+    
     private lazy var separatorLine: UIView = {
         let view = UIView()
         view.backgroundColor = Color.separator
@@ -68,6 +95,26 @@ class MovieCell: UICollectionViewCell {
             make.top.equalTo(self.posterImageView.snp.top)
             make.left.equalTo(self.posterImageView.snp.right).offset(8)
             make.right.equalToSuperview().inset(16)
+        }
+        
+        self.contentView.addSubview(infoLabel)
+        infoLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(self.titleLabel.snp.bottom).offset(4)
+            make.left.equalTo(self.posterImageView.snp.right).offset(8)
+            make.right.equalToSuperview().inset(16)
+        }
+        
+        self.contentView.addSubview(starIcon)
+        starIcon.snp.makeConstraints { (make) in
+            make.top.equalTo(self.infoLabel.snp.bottom).offset(6)
+            make.height.width.equalTo(12)
+            make.left.equalTo(self.posterImageView.snp.right).offset(8)
+        }
+        
+        self.contentView.addSubview(ratingLabel)
+        ratingLabel.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(self.starIcon)
+            make.left.equalTo(self.starIcon.snp.right).offset(2)
         }
         
         self.contentView.addSubview(separatorLine)
