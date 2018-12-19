@@ -15,7 +15,7 @@ struct Color {
     static let destructive = UIColor(hexString: "#cf2929")
     static let mainText = UIColor(red:0.94, green:0.94, blue:0.96, alpha:1.0)
     static let secondaryText = UIColor(red:0.74, green:0.74, blue:0.74, alpha:1.0)
-    static let separator = UIColor(red:0.42, green:0.42, blue:0.42, alpha:0.5)
+    static let separator = UIColor(hexString: "#4f4f4f")
     
 }
 

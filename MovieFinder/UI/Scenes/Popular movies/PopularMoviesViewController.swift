@@ -52,7 +52,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
         let _emptyStubView = UIView()
         
         let label = UILabel()
-        label.text = "No data".uppercased()
+        label.text = "List is empty".uppercased()
         label.textColor = UIColor.gray
         
         _emptyStubView.addSubview(label)
@@ -201,13 +201,13 @@ extension PopularMoviesViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard scrollView == self.collectionView else { return }
 //        Uncomment for endless scroll
-//        if scrollView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) - 160 {
-//            if !downloading {
-//                self.currentPage += 1
-//                self.fetchMovies(page: self.currentPage)
-//            }
-//
-//        }
+        if scrollView.contentOffset.y >= (self.collectionView.contentSize.height - self.collectionView.bounds.size.height) - 160 {
+            if !downloading {
+                self.currentPage += 1
+                self.fetchMovies(page: self.currentPage)
+            }
+
+        }
     }
     
 }

@@ -34,6 +34,7 @@ class SearchResultViewController: UIViewController, Alertable {
         
         self.view.backgroundColor = Color.background
         self.tableView.backgroundColor = Color.cellBackground
+        self.tableView.separatorColor = Color.separator
         
         self.view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in

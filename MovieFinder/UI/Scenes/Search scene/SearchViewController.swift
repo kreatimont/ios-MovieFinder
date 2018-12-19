@@ -28,7 +28,7 @@ class SearchViewController: UIViewController, Alertable {
         let _emptyStubView = UIView()
         
         let label = UILabel()
-        label.text = "No data".uppercased()
+        label.text = "Try to search"
         label.textColor = UIColor.gray
         
         _emptyStubView.addSubview(label)
