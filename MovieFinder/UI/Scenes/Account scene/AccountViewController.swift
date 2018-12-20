@@ -91,7 +91,7 @@ extension AccountViewController: UITableViewDataSource {
         if section == 0 {
             return 3
         } else if section == 1 {
-            return 2
+            return 1
         } else if section == 2 {
             return 1
         }
@@ -132,9 +132,6 @@ extension AccountViewController: UITableViewDataSource {
             let cell = UITableViewCell(style: .value1, reuseIdentifier: "cell")
             if indexPath.row == 0 {
                 cell.textLabel?.text = "Watchlater list"
-            } else if indexPath.row == 1 {
-                cell.textLabel?.text = "Bought movies"
-                
             }
             cell.accessoryType = .disclosureIndicator
             cell.textLabel?.textColor = Color.mainText
