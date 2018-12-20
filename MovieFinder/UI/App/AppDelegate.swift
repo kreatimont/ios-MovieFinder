@@ -27,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window?.rootViewController = LoginViewController()
         }
         
+        window?.tintColor = Color.colorAccent
+        
         window?.makeKeyAndVisible()
         
         return true

@@ -19,7 +19,7 @@ class PopularMoviesViewController: UIViewController, Alertable {
     
     private lazy var refreshControl: UIRefreshControl = {
         let refreshCtrl = UIRefreshControl()
-        refreshCtrl.tintColor = Color.mainText
+        refreshCtrl.tintColor = Color.colorAccent
         refreshCtrl.addTarget(self, action: #selector(handleRefresh(_:)), for: .valueChanged)
         return refreshCtrl
     }()
@@ -28,11 +28,12 @@ class PopularMoviesViewController: UIViewController, Alertable {
         let _loadingView = UIView()
         
         let activityIndicator = UIActivityIndicatorView(style: .white)
+        activityIndicator.color = Color.colorAccent
         activityIndicator.startAnimating()
         
         let label = UILabel()
         label.text = "Loading"
-        label.textColor = Color.mainText
+        label.textColor = Color.colorAccent
         
         let stackView = UIStackView(arrangedSubviews: [activityIndicator, label])
         stackView.distribution = .fillProportionally

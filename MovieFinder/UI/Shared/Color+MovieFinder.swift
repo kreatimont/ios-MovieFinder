@@ -10,6 +10,7 @@ import UIKit
 
 struct Color {
     
+    static let colorAccent = UIColor(hexString: "#39d582")
     static let background = UIColor(red:0.13, green:0.13, blue:0.13, alpha:1.0)
     static let cellBackground = UIColor(hexString: "#191919")
     static let destructive = UIColor(hexString: "#cf2929")

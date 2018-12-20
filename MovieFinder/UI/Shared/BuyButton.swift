@@ -16,13 +16,13 @@ class BuyButton: UIButton {
         self.backgroundColor = UIColor.clear
         
         self.layer.cornerRadius = 5
-        self.layer.borderColor = self.tintColor.cgColor
+        self.layer.borderColor = Color.colorAccent.cgColor
         self.layer.borderWidth = 2
         
-        self.setTitleColor(self.tintColor, for: .normal)
+        self.setTitleColor(Color.colorAccent, for: .normal)
         self.setTitleColor(Color.background, for: .highlighted)
         
-        self.titleLabel?.textColor = self.tintColor
+        self.titleLabel?.textColor = Color.colorAccent
         self.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
     }
     

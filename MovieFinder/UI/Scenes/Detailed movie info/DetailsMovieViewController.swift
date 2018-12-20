@@ -296,9 +296,9 @@ class DetailsMovieViewController: UIViewController, Alertable {
             self.addToWatchLaterButton.setTitleColor(Color.background, for: .highlighted)
         } else {
             self.addToWatchLaterButton.setTitle("Watch later".uppercased(), for: .normal)
-            self.addToWatchLaterButton.tintColor = self.view.tintColor
-            self.addToWatchLaterButton.layer.borderColor = self.view.tintColor.cgColor
-            self.addToWatchLaterButton.setTitleColor(self.view.tintColor, for: .normal)
+            self.addToWatchLaterButton.tintColor = Color.colorAccent
+            self.addToWatchLaterButton.layer.borderColor = Color.colorAccent.cgColor
+            self.addToWatchLaterButton.setTitleColor(Color.colorAccent, for: .normal)
             self.addToWatchLaterButton.setTitleColor(Color.background, for: .highlighted)
         }
     }
