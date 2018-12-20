@@ -63,9 +63,7 @@ extension AccountViewController: UITableViewDelegate {
         }
         if indexPath.section == 1 {
             if indexPath.row == 0 {
-                if let user = self.user {
-                    self.navigationController?.pushViewController(WatchlaterListViewController(client: MovieFinderClient(), movies: user.watchlaterMovies), animated: true)
-                }
+                self.navigationController?.pushViewController(WatchlaterListViewController(client: MovieFinderClient(), movies: user?.watchlaterMovies ?? []), animated: true)
             } else if indexPath.row == 1 {
                 self.showAlert(title: nil, message: "Bought movies section is currently unavailable", buttonTitle: "OK", handler: nil)
             }

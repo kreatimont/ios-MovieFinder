@@ -328,6 +328,7 @@ class DetailsMovieViewController: UIViewController, Alertable {
                             self.adaptWatchLaterButtonTo(remove: true)
                             self.movieInWatchlist = true
                         }
+                        Settings.shared.watchlistUpdated = true
                     } else {
                         self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
                     }
@@ -349,6 +350,7 @@ class DetailsMovieViewController: UIViewController, Alertable {
                             self.adaptWatchLaterButtonTo(remove: false)
                             self.movieInWatchlist = false
                         }
+                        Settings.shared.watchlistUpdated = true
                     } else {
                         self.showAlert(title: nil, message: error, buttonTitle: "OK", handler: nil)
                     }

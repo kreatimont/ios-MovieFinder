@@ -30,4 +30,19 @@ class Settings: NSObject {
         }
     }
     
+    var watchlistUpdated: Bool {
+        get {
+            if let watchlist = self.userDefaults.object(forKey: "watchlist") as? Bool {
+                return watchlist
+            } else {
+                return true
+            }
+        }
+        set {
+            self.userDefaults.set(newValue, forKey: "watchlist")
+            self.userDefaults.synchronize()
+            NotificationCenter.default.post(name: .didWatchlistUpdated, object: nil)
+        }
+    }
+    
 }

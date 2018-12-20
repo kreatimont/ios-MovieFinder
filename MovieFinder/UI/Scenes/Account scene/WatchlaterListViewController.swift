@@ -107,6 +107,8 @@ class WatchlaterListViewController: UIViewController, Alertable {
         collectionView.delegate = self
         collectionView.dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(fetchMovies), name: Notification.Name.didWatchlistUpdated, object: nil)
+        
         self.showLoading()
         self.fetchMovies()
     }
@@ -132,15 +134,28 @@ class WatchlaterListViewController: UIViewController, Alertable {
         self.collectionView.backgroundView = nil
     }
     
-    private func fetchMovies() {
+    @objc private func fetchMovies() {
         self.downloading = true
         
-//        self.client.top(page: 1) { (movieResponse, error) in
-//            self.downloading = false
-//            self.showCollectionView()
-//            self.refreshControl.endRefreshing()
-//            
-//        }
+        _ = MovieFinderClient().profile(id: AuthSession.current.userId!) { (user, error) in
+            if let user = user {
+                self.movies = user.watchlaterMovies
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                if self.movies.count > 0 {
+                    self.downloading = false
+                    self.showCollectionView()
+                    self.refreshControl.endRefreshing()
+                } else {
+                    self.downloading = false
+                    self.showEmptyStub()
+                    self.refreshControl.endRefreshing()
+                }
+            }
+            
+        }
+        
     }
     
 }

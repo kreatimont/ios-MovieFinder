@@ -11,6 +11,7 @@
 		051E57CB21C70F3000BFBF23 /* WatchlaterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */; };
 		0541260D21CB8624009762D8 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541260C21CB8624009762D8 /* TextFieldCell.swift */; };
 		0541260F21CB88F9009762D8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541260E21CB88F9009762D8 /* Settings.swift */; };
+		0541261121CB8F3C009762D8 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541261021CB8F3C009762D8 /* Notification.swift */; };
 		059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059020F021A2CE1A00E91FCC /* AppDelegate.swift */; };
 		059020F621A2CE1A00E91FCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059020F421A2CE1A00E91FCC /* Main.storyboard */; };
 		059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059020F721A2CE1A00E91FCC /* MovieFinder.xcdatamodeld */; };
@@ -78,6 +79,7 @@
 		051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlaterListViewController.swift; sourceTree = "<group>"; };
 		0541260C21CB8624009762D8 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
 		0541260E21CB88F9009762D8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0541261021CB8F3C009762D8 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		059020ED21A2CE1A00E91FCC /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059020F021A2CE1A00E91FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059020F521A2CE1A00E91FCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				0590213E21A2DDF600E91FCC /* ApiKeys.swift */,
 				05A4B18821C6DC3500E56646 /* Regex.swift */,
 				0541260E21CB88F9009762D8 /* Settings.swift */,
+				0541261021CB8F3C009762D8 /* Notification.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -552,6 +555,7 @@
 				05A4B19121C7027B00E56646 /* TextViewCell.swift in Sources */,
 				0541260D21CB8624009762D8 /* TextFieldCell.swift in Sources */,
 				05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */,
+				0541261121CB8F3C009762D8 /* Notification.swift in Sources */,
 				05A4B17921C6B22000E56646 /* MovieFinderRouter.swift in Sources */,
 				05C9433C21CAD70F00CEAF5A /* SuccessIndicator.swift in Sources */,
 				05A81D6B21BE6BCA005559EB /* AuthSession.swift in Sources */,
