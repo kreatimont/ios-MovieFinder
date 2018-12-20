@@ -192,7 +192,14 @@ class DetailsMovieViewController: UIViewController, Alertable {
             make.edges.equalToSuperview()
         }
         
-        self.view.addSubview(posterImageView)
+        let scrollView = UIScrollView()
+        self.view.addSubview(scrollView)
+        scrollView.snp.makeConstraints { (make) in
+            make.edges.equalTo(self.view.safeAreaLayoutGuide)
+            make.width.equalTo(UIScreen.main.bounds.width)
+        }
+        
+        scrollView.addSubview(posterImageView)
         posterImageView.snp.makeConstraints { (make) in
             make.top.equalTo(self.view.safeAreaLayoutGuide).inset(8)
             make.left.equalToSuperview().inset(12)
@@ -200,34 +207,34 @@ class DetailsMovieViewController: UIViewController, Alertable {
             make.width.equalTo(posterImageView.snp.height).multipliedBy(0.60)
         }
         
-        self.view.addSubview(titleLabel)
+        scrollView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.posterImageView.snp.top)
             make.left.equalTo(self.posterImageView.snp.right).offset(12)
             make.right.equalToSuperview().inset(12)
         }
         
-        self.view.addSubview(infoLabel)
+        scrollView.addSubview(infoLabel)
         infoLabel.snp.makeConstraints { (make) in
             make.top.equalTo(self.titleLabel.snp.bottom).offset(4)
             make.left.equalTo(self.posterImageView.snp.right).offset(12)
             make.right.equalToSuperview().inset(12)
         }
         
-        self.view.addSubview(starIcon)
+        scrollView.addSubview(starIcon)
         starIcon.snp.makeConstraints { (make) in
             make.top.equalTo(self.infoLabel.snp.bottom).offset(6)
             make.height.width.equalTo(12)
             make.left.equalTo(self.posterImageView.snp.right).offset(12)
         }
         
-        self.view.addSubview(ratingLabel)
+        scrollView.addSubview(ratingLabel)
         ratingLabel.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(self.starIcon)
             make.left.equalTo(self.starIcon.snp.right).offset(2)
         }
         
-        self.view.addSubview(addToWatchLaterButton)
+        scrollView.addSubview(addToWatchLaterButton)
         addToWatchLaterButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview().inset(8)
             make.width.equalTo(104)
@@ -238,16 +245,17 @@ class DetailsMovieViewController: UIViewController, Alertable {
         let separator = UIView()
         separator.backgroundColor = Color.separator
         
-        self.view.addSubview(separator)
+        scrollView.addSubview(separator)
         separator.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.posterImageView.snp.bottom).offset(8)
             make.height.equalTo(0.5)
         }
         
-        self.view.addSubview(trailersSectionView)
+        scrollView.addSubview(trailersSectionView)
         trailersSectionView.snp.makeConstraints { (make) in
             make.top.equalTo(separator.snp.bottom).offset(8)
+            make.width.equalTo(UIScreen.main.bounds.width)
             make.left.right.equalToSuperview()
             make.height.equalTo(160)
         }
@@ -255,13 +263,13 @@ class DetailsMovieViewController: UIViewController, Alertable {
         let separator2 = UIView()
         separator2.backgroundColor = Color.separator
         
-        self.view.addSubview(separator2)
+        scrollView.addSubview(separator2)
         separator2.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.top.equalTo(self.trailersSectionView.snp.bottom).offset(8)
         }
         
-        self.view.addSubview(aboutSection)
+        scrollView.addSubview(aboutSection)
         aboutSection.snp.makeConstraints { (make) in
             make.top.equalTo(separator2.snp.bottom).offset(8)
             make.left.right.equalToSuperview()
@@ -382,7 +390,7 @@ extension DetailsMovieViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let availableHieght = self.trailersCollectionView.frame.height - (sectionInsets.top + sectionInsets.bottom)
-        return CGSize(width: self.trailersCollectionView.frame.width / 2, height: availableHieght)
+        return CGSize(width: self.view.frame.width / 2, height: availableHieght)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
