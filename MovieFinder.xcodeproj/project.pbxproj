@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		051E57C921C70BFF00BFBF23 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E57C821C70BFF00BFBF23 /* User.swift */; };
 		051E57CB21C70F3000BFBF23 /* WatchlaterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */; };
+		0541260D21CB8624009762D8 /* TextFieldCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541260C21CB8624009762D8 /* TextFieldCell.swift */; };
+		0541260F21CB88F9009762D8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0541260E21CB88F9009762D8 /* Settings.swift */; };
 		059020F121A2CE1A00E91FCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059020F021A2CE1A00E91FCC /* AppDelegate.swift */; };
 		059020F621A2CE1A00E91FCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 059020F421A2CE1A00E91FCC /* Main.storyboard */; };
 		059020F921A2CE1A00E91FCC /* MovieFinder.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 059020F721A2CE1A00E91FCC /* MovieFinder.xcdatamodeld */; };
@@ -74,6 +76,8 @@
 /* Begin PBXFileReference section */
 		051E57C821C70BFF00BFBF23 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		051E57CA21C70F3000BFBF23 /* WatchlaterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchlaterListViewController.swift; sourceTree = "<group>"; };
+		0541260C21CB8624009762D8 /* TextFieldCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldCell.swift; sourceTree = "<group>"; };
+		0541260E21CB88F9009762D8 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		059020ED21A2CE1A00E91FCC /* MovieFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		059020F021A2CE1A00E91FCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		059020F521A2CE1A00E91FCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -301,6 +305,7 @@
 				0590213821A2DD7A00E91FCC /* Constants.swift */,
 				0590213E21A2DDF600E91FCC /* ApiKeys.swift */,
 				05A4B18821C6DC3500E56646 /* Regex.swift */,
+				0541260E21CB88F9009762D8 /* Settings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -365,6 +370,7 @@
 				05A81D6521BE5172005559EB /* SwitchCell.swift */,
 				05A81D6821BE51AC005559EB /* LogoutCell.swift */,
 				05A4B19021C7027B00E56646 /* TextViewCell.swift */,
+				0541260C21CB8624009762D8 /* TextFieldCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -542,7 +548,9 @@
 				0590214821A2F0DE00E91FCC /* DetailsMovieViewController.swift in Sources */,
 				0590213F21A2DDF600E91FCC /* ApiKeys.swift in Sources */,
 				0590213221A2DCF000E91FCC /* MovieResponse.swift in Sources */,
+				0541260F21CB88F9009762D8 /* Settings.swift in Sources */,
 				05A4B19121C7027B00E56646 /* TextViewCell.swift in Sources */,
+				0541260D21CB8624009762D8 /* TextFieldCell.swift in Sources */,
 				05AEB17B21B477E7008944D5 /* InputTextField.swift in Sources */,
 				05A4B17921C6B22000E56646 /* MovieFinderRouter.swift in Sources */,
 				05C9433C21CAD70F00CEAF5A /* SuccessIndicator.swift in Sources */,

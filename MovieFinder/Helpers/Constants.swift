@@ -9,7 +9,7 @@
 struct Constants {
     
     struct Api {
-        static let localUrl = "http://localhost:3000"
+        static var localUrl = "http://172.20.10.2:3000"
         static let baseUrl = "https://api.themoviedb.org"
         static let apiVersion = "3"
         static let imageUrl = "https://image.tmdb.org/t/p/"

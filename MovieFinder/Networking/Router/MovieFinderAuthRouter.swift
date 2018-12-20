@@ -44,7 +44,7 @@ enum MovieFinderAuthRouter: URLRequestConvertible {
     private var baseUrl: String {
         switch self {
         case .login, .signup:
-            return "\(Constants.Api.localUrl)"
+            return "\(Settings.shared.localUrl)"
         }
     }
     

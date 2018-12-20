@@ -63,7 +63,7 @@ enum MovieFinderRouter: URLRequestConvertible {
     private var baseUrl: String {
         switch self {
         case .top, .latest, .details, .search, .userProfile, .addToWatchLater, .removeFromWatchLater:
-            return "\(Constants.Api.localUrl)"
+            return "\(Settings.shared.localUrl)"
         }
     }
     

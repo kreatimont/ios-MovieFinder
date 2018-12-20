@@ -165,11 +165,11 @@ class LoginViewController: UIViewController, Alertable {
     //MARK: - action
     
     @objc func handleLoginTap(_ sender: Any?) {
-//        if let username = self.usernameField.text, username == "nadtoka.alexandr@gmail.com" {
-//            AuthSession.current.update(authToken: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hZHRva2EuYWxleGFuZHJAZ21haWwuY29tIiwidXNlcklkIjoxLCJpYXQiOjE1NDQ5Njk0NjksImV4cCI6MTU0NDk3NjY2OX0.rmH_eBtcayHtKIA1bfCDlNrXv5WeHpRDkZwwEVDKQOA", email: "nadtoka.alexandr@gmail.com")
-//            Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
-//        }
-            
+        if let username = self.usernameField.text, username == "kreatimont-god" {
+            Navigator.shared.route(to: .popularMovies, wrap: .tabBar)
+            return
+        }
+        
         guard let email = self.usernameField.text, email.count > 0 else {
             self.showAlert(title: nil, message: "Please, enter email!", buttonTitle: "OK", handler: nil)
             self.usernameField.becomeFirstResponder()

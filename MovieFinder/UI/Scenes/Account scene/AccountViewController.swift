@@ -113,15 +113,17 @@ extension AccountViewController: UITableViewDataSource {
                 cell.detailTextLabel?.text = "\(AuthSession.current.userId ?? -1)"
                 cell.selectionStyle = .none
             } else if indexPath.row == 2 {
-                let textCell = TextViewCell(style: .default, reuseIdentifier: "textViewCell")
-                textCell.backgroundColor = Color.cellBackground
-                textCell.selectedBackgroundView = generateBgViewForSelectedCell()
-                textCell.textLabel?.text = AuthSession.current.authToken ?? ""
-                textCell.textLabel?.textColor = Color.mainText
-                textCell.textLabel?.numberOfLines = 5
-                textCell.textLabel?.font = UIFont(name: "Courier", size: 15)
-                textCell.selectedBackgroundView = generateBgViewForSelectedCell()
-                return textCell
+                
+                let textFieldCell = TextFieldCell(style: .default, reuseIdentifier: "textfieldCell")
+            
+                textFieldCell.backgroundColor = Color.cellBackground
+                textFieldCell.selectionStyle = .none
+                textFieldCell.textLabel?.text = "Backend url"
+                textFieldCell.textLabel?.textColor = Color.mainText
+
+                textFieldCell.textField.text = Settings.shared.localUrl
+                
+                return textFieldCell
             }
             
             cell.textLabel?.textColor = Color.mainText
