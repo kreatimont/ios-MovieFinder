@@ -35,7 +35,7 @@ class InputTextField: UITextField {
     
     func hightlight(_ isHighlighted: Bool) {
         if isHighlighted {
-            underlineView.backgroundColor = self.tintColor
+            underlineView.backgroundColor = Color.colorAccent
         } else {
             underlineView.backgroundColor = UIColor.darkGray
         }

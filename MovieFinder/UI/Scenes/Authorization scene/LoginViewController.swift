@@ -79,7 +79,7 @@ class LoginViewController: UIViewController, Alertable {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 46, weight: .heavy)
         label.text = "Movie Finder"
-        label.textColor = self.view.tintColor
+        label.textColor = Color.colorAccent
         return label
     }()
     

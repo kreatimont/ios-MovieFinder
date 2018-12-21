@@ -13,7 +13,7 @@ class ButtonBg: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = self.tintColor
+        self.backgroundColor = Color.colorAccent
         self.titleLabel?.textColor = UIColor.white
         self.titleLabel?.font = UIFont.systemFont(ofSize: 15, weight: .bold)
         
